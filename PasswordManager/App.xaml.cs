@@ -16,8 +16,9 @@ namespace PasswordManager
     {
         private void Application_Startup(object sender, StartupEventArgs e)
         {
-            DIProvider.Startup();
+
         }
+
         private void Application_Exit(object sender, ExitEventArgs e)
         {
 

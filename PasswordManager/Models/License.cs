@@ -1,0 +1,11 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace PasswordManager.Models
+{
+    public class License
+    {
+
+    }
+}

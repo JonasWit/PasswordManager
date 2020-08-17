@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Config;
+using PasswordManager.Controllers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,8 +24,13 @@ namespace PasswordManager.DI
                 @this.AddTransient(service);
             }
 
-            //@this.AddSingleton(new ViewModelsController());
-            //@this.AddSingleton(new FilesManager());
+            @this.AddSingleton(new ViewModelsController());
+            @this.AddSingleton(new SystemData());
+            @this.AddSingleton(new LicenseHandler());
+            @this.AddSingleton(new FilesHandler());
+            
+
+
 
             return @this;
         }
