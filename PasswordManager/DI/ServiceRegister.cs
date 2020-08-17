@@ -28,7 +28,7 @@ namespace PasswordManager.DI
             @this.AddSingleton(new SystemData());
             @this.AddSingleton(new LicenseHandler());
             @this.AddSingleton(new FilesHandler());
-            
+            @this.AddHttpClient();
 
 
 

@@ -52,5 +52,21 @@ namespace PasswordManager
             ButtonOpenMenu.Visibility = Visibility.Visible;
             ButtonCloseMenu.Visibility = Visibility.Collapsed;
         }
+
+        private void SelectDashboardPage(object sender, MouseButtonEventArgs e) =>
+            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Dashboard;
+
+        private void SelectCreatePage(object sender, MouseButtonEventArgs e) =>
+            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Create;
+
+
+        private void SelectDeletePage(object sender, MouseButtonEventArgs e) =>
+            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Delete;
+
+        private void SelectExtractPage(object sender, MouseButtonEventArgs e) =>
+            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Extract;
+
+        private void SelectLicensePage(object sender, MouseButtonEventArgs e) =>
+            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.License;
     }
 }

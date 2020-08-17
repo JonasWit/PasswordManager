@@ -79,31 +79,31 @@
                     </Button>
                 </Grid>
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF0494E6">
-                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}">
+                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectDashboardPage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Dashboard" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}">
+                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectCreatePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Pencil" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Create Password" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}">
+                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectDeletePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Delete Password" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}">
+                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectExtractPage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Unarchive"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Extract Password" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60">
+                    <ListViewItem Height="60" PreviewMouseLeftButtonDown="SelectLicensePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="License"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="License" VerticalAlignment="Center" Margin="20 10"/>

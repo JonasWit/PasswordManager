@@ -16,15 +16,15 @@ namespace PasswordManager.Converters
                 case AppPage.Welcome:
                     return new Welcome();
                 case AppPage.Dashboard:
-                    return new Welcome();
+                    return new Dashboard();
                 case AppPage.Create:
-                    return new Welcome();
+                    return new Create();
                 case AppPage.Delete:
-                    return new Welcome();
+                    return new Delete();
                 case AppPage.Extract:
-                    return new Welcome();
+                    return new Extract();
                 case AppPage.License:
-                    return new Welcome();
+                    return new License();
                 default:
                     return new Welcome();
             }
