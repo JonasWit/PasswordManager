@@ -12,5 +12,6 @@ namespace PasswordManager.Pages
         Delete = 3,
         Extract = 4,
         License = 5,
+        ApplyLicenseKey = 5,
     }
 }
