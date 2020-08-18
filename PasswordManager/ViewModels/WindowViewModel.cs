@@ -1,4 +1,4 @@
-﻿using PasswordManager.DI;
+﻿using PasswordManager.Dependancies;
 using PasswordManager.Pages;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace PasswordManager.ViewModels
         {
             try
             {
-                var licenseManagger = DIProvider.Provider.GetService<LicenseHandler>();
+                var licenseManagger = Dependancies.DI.Provider.GetService<LicenseHandler>();
 
                 if (licenseManagger.CheckLicense())
                 {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace PasswordManager.DI
+namespace PasswordManager.Dependancies
 {
     public class Service : Attribute { }
 }

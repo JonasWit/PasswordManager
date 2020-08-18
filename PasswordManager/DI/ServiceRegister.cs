@@ -7,7 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace PasswordManager.DI
+namespace PasswordManager.Dependancies
 {
     public static class ServiceRegister
     {

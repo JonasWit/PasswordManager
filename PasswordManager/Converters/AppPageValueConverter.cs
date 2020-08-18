@@ -11,23 +11,18 @@ namespace PasswordManager.Converters
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             // Find the appropriate page
-            switch ((AppPage)value)
+            return ((AppPage)value) switch
             {
-                case AppPage.Welcome:
-                    return new Welcome();
-                case AppPage.Dashboard:
-                    return new Dashboard();
-                case AppPage.Create:
-                    return new Create();
-                case AppPage.Delete:
-                    return new Delete();
-                case AppPage.Extract:
-                    return new Extract();
-                case AppPage.License:
-                    return new License();
-                default:
-                    return new Welcome();
-            }
+                AppPage.Welcome => new Welcome(),
+                AppPage.Dashboard => new Dashboard(),
+                AppPage.Create => new Create(),
+                AppPage.Delete => new Delete(),
+                AppPage.Extract => new Extract(),
+                AppPage.License => new License(),
+                AppPage.ApplyLicenseKey => new ApplyLicenseKey(),
+                AppPage.Loading => new Loading(),
+                _ => new Welcome(),
+            };
         }
 
         public override object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -1,5 +1,5 @@
 ﻿using PasswordManager.Controllers;
-using PasswordManager.DI;
+using PasswordManager.Dependancies;
 using PasswordManager.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace PasswordManager.ViewModels
         public void SetupCommands()
         {
 
-            GetPassword = new RelayCommand(() => DIProvider.Provider.GetService<DashboardController>().GetPassword());
+            GetPassword = new RelayCommand(() => Dependancies.DI.Provider.GetService<DashboardController>().GetPassword());
 
 
 

@@ -3,9 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace PasswordManager.DI
+namespace PasswordManager.Dependancies
 {
-    public static class DIProvider
+    public static class DI
     {
         public static IServiceProvider Provider { get; private set; }
 

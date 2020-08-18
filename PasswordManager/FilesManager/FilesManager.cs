@@ -1,4 +1,4 @@
-﻿using PasswordManager.DI;
+﻿using PasswordManager.Dependancies;
 using System;
 using System.Collections.Generic;
 using System.IO;

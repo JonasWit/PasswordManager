@@ -8,22 +8,14 @@
       d:DesignHeight="530" d:DesignWidth="880"
       Title="Create">
 
-    <Grid Background="LightGray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-
-        </Grid.RowDefinitions>
-
-        <StackPanel>
+    <Grid Background ="White">
+        <StackPanel Grid.Column="1">
             <TextBox x:Name="NameTextBox"
-                  materialDesign:HintAssist.Hint="Name"
-                  materialDesign:HintAssist.HelperText="Helper text longer than error">
+                  materialDesign:HintAssist.Hint="Login"
+                  materialDesign:HintAssist.HelperText="Helper text longer than error"
+                     Margin="10">
                 <TextBox.Text>
-                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                    <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule 
                                 ValidatesOnTargetUpdated="True"
@@ -32,6 +24,24 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Your Generated Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}"/>
+            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding GeneratePassword}">
+                Generate Password
+            </Button>
+
+            <Grid Width="220">
+                <Button Style="{StaticResource MaterialDesignRaisedButton}"
+                    materialDesign:ButtonProgressAssist.Value="-1"
+                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
+                    materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding Busy}"
+                    Command="{Binding GeneratePassword}"
+                    Content="Indeterminate"
+                    Margin="10" />
+            </Grid>
+
+
+
+
         </StackPanel>
         
         

@@ -1,5 +1,5 @@
 ﻿using PasswordManager.Data;
-using PasswordManager.DI;
+using PasswordManager.Dependancies;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,9 +11,9 @@ namespace PasswordManager.Config
     {
         public static void Initialize()
         {
-            DIProvider.Startup();
+            Dependancies.DI.Startup();
 
-            var filesHander = DIProvider.Provider.GetService<FilesHandler>();
+            var filesHander = Dependancies.DI.Provider.GetService<FilesHandler>();
             filesHander.HandleRootFolder();
 
             PMContext.Startup();

@@ -1,4 +1,4 @@
-﻿using PasswordManager.DI;
+﻿using PasswordManager.Dependancies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,8 +31,8 @@ namespace PasswordManager
             AppStartup.Initialize();
             InitializeComponent();
 
-            DIProvider.Provider.GetService<ViewModelsController>().CreateViewModel<WindowViewModel>();
-            DataContext = DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>();
+            Dependancies.DI.Provider.GetService<ViewModelsController>().CreateViewModel<WindowViewModel>();
+            DataContext = Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
@@ -54,19 +54,19 @@ namespace PasswordManager
         }
 
         private void SelectDashboardPage(object sender, MouseButtonEventArgs e) =>
-            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Dashboard;
+            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Dashboard;
 
         private void SelectCreatePage(object sender, MouseButtonEventArgs e) =>
-            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Create;
+            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Create;
 
 
         private void SelectDeletePage(object sender, MouseButtonEventArgs e) =>
-            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Delete;
+            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Delete;
 
         private void SelectExtractPage(object sender, MouseButtonEventArgs e) =>
-            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Extract;
+            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Extract;
 
         private void SelectLicensePage(object sender, MouseButtonEventArgs e) =>
-            DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.License;
+            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.License;
     }
 }

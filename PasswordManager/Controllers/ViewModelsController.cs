@@ -1,10 +1,12 @@
-﻿using PasswordManager.ViewModels;
+﻿using PasswordManager.Dependancies;
+using PasswordManager.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace PasswordManager.Controllers
 {
+    [Service]
     public class ViewModelsController
     {
         public List<BaseViewModel> AppViewModels { get; set; } = new List<BaseViewModel>();

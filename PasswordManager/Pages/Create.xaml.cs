@@ -1,5 +1,5 @@
 ﻿using PasswordManager.Controllers;
-using PasswordManager.DI;
+using PasswordManager.Dependancies;
 using PasswordManager.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -26,8 +26,8 @@ namespace PasswordManager.Pages
         {
             InitializeComponent();
 
-            DIProvider.Provider.GetService<ViewModelsController>().CreateViewModel<CreateViewModel>();
-            DataContext = DIProvider.Provider.GetService<ViewModelsController>().GetViewModel<CreateViewModel>();
+            Dependancies.DI.Provider.GetService<ViewModelsController>().CreateViewModel<CreateViewModel>();
+            DataContext = Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<CreateViewModel>();
         }
     }
 }
