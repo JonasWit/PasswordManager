@@ -40,5 +40,7 @@ namespace PasswordManager.Data
 
             return pmContext.SaveChangesAsync();
         }
+
+        public PasswordRecord GetPassword(string name) => pmContext.Passwords.FirstOrDefault(x => x.Name == name);
     }
 }
