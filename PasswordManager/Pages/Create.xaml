@@ -29,22 +29,9 @@
                 Generate Password
             </Button>
 
-            <Grid Width="220">
-                <Button Style="{StaticResource MaterialDesignRaisedButton}"
-                    materialDesign:ButtonProgressAssist.Value="-1"
-                    materialDesign:ButtonProgressAssist.IsIndicatorVisible="True"
-                    materialDesign:ButtonProgressAssist.IsIndeterminate="{Binding Busy}"
-                    Command="{Binding GeneratePassword}"
-                    Content="Indeterminate"
-                    Margin="10" />
-            </Grid>
-
-
-
-
         </StackPanel>
-        
-        
+
+
 
 
 

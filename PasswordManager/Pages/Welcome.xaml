@@ -10,7 +10,7 @@
 
 
     <Grid>
-        <TextBlock Text="TEST" Background="Transparent"></TextBlock>
+        <TextBlock Text="WELCOME" Background="Transparent"></TextBlock>
     </Grid>
 
 

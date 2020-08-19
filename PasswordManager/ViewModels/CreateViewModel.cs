@@ -25,7 +25,7 @@ namespace PasswordManager.ViewModels
 
         private void SetUpCommands()
         {
-            GeneratePassword = new RelayCommand(() => DI.Provider.GetService<CreatePageController>().GeneratePassword());
+            GeneratePassword = new RelayCommand(async () => await DI.Provider.GetService<CreatePageController>().GeneratePassword());
         }
     }
 }
