@@ -1,8 +1,13 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.BusinessLogic;
 using PasswordManager.Config;
 using PasswordManager.Controllers;
+using PasswordManager.Data;
+using PasswordManager.Infrastructure;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -24,13 +29,16 @@ namespace PasswordManager.Dependancies
                 @this.AddTransient(service);
             }
 
+            @this.AddTransient<IPasswordGenerator, PasswordGenerator>();
+            @this.AddTransient<IAppRepository, AppRepository>();
             @this.AddSingleton(new ViewModelsController());
             @this.AddSingleton(new SystemData());
             @this.AddSingleton(new LicenseHandler());
             @this.AddSingleton(new FilesHandler());
+            @this.AddSingleton(new AppController());
             @this.AddHttpClient();
-
-
+            @this.AddDbContext<PMContext>(options =>
+                options.UseSqlite($"Data Source={Path.Combine(Definitions.CorePath, Definitions.DBName)}"));
 
             return @this;
         }

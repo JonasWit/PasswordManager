@@ -5,14 +5,16 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.ViewModels;
+using PasswordManager.Models;
 
 namespace PasswordManager.Controllers
 {
-    [Service]
     public class AppController
     {
         public bool Busy { get; set; }
         public AppPage Page { get; private set; } = AppPage.Welcome;
+
+        public PasswordRecord ActivePassword { get; set; }
 
         public void EnableBusyState()
         {
@@ -24,7 +26,6 @@ namespace PasswordManager.Controllers
             wvm.CurrentPage = AppPage.Loading;
         }
 
-
         public void DisableBusyState()
         {
             if (!Busy) return;
@@ -33,6 +34,5 @@ namespace PasswordManager.Controllers
             var wvm = DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>();
             wvm.CurrentPage = Page;
         }
-
     }
 }

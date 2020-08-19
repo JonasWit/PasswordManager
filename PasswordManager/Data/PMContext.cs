@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PasswordManager.Config;
+using PasswordManager.Models;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,14 +10,10 @@ namespace PasswordManager.Data
 {
     public class PMContext : DbContext
     {
+        public DbSet<PasswordRecord> Passwords { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source={Path.Combine(Definitions.CorePath, Definitions.DBName)}");
 
-        public static void Startup()
-        {
-            using var context = new PMContext();
-            context.Database.EnsureCreated();
-        }
+        public PMContext(DbContextOptions<PMContext> options) : base(options) { }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

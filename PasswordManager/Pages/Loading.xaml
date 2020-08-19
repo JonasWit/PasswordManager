@@ -9,6 +9,9 @@
       Title="Loading">
 
     <Grid Background="White">
-        <ProgressBar Style="{StaticResource MaterialDesignCircularProgressBar}" Value="0" IsIndeterminate="True" Height="200" Width="200"/>
+        <ProgressBar 
+            Style="{StaticResource MaterialDesignCircularProgressBar}" 
+            Value="0" IsIndeterminate="True" Height="200" Width="200" VerticalAlignment="Center"
+            HorizontalAlignment="Center"/>
     </Grid>
 </Page>

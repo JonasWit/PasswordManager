@@ -52,5 +52,18 @@ namespace PasswordManager.Controllers
 
             return false;
         }
+
+        public bool CheckViewModel<T>() where T : BaseViewModel
+        {
+            foreach (var item in AppViewModels)
+            {
+                if (item is T)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
     }
 }

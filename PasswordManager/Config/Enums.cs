@@ -9,5 +9,6 @@ namespace PasswordManager.Config
         Ok = 0,
         Failed = 1,
         Exception = 2,
+        Cancelled = 3,
     }
 }

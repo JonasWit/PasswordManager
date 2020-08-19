@@ -10,10 +10,18 @@
 
     <Grid Background ="White">
         <StackPanel Grid.Column="1">
-            <TextBox x:Name="NameTextBox"
-                  materialDesign:HintAssist.Hint="Login"
-                  materialDesign:HintAssist.HelperText="Helper text longer than error"
-                     Margin="10">
+            <TextBox materialDesign:HintAssist.Hint="Name" materialDesign:HintAssist.HelperText="Name of the new record here..." Margin="10">
+                <TextBox.Text>
+                    <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:NotEmptyValidationRule 
+                                ValidatesOnTargetUpdated="True"
+                                xmlns:validationRules="clr-namespace:PasswordManager.ValidationRules"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Login" materialDesign:HintAssist.HelperText="Your Login here..." Margin="10">
                 <TextBox.Text>
                     <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
@@ -24,11 +32,36 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox Margin="10" materialDesign:HintAssist.Hint="Your Generated Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}"/>
-            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding GeneratePassword}">
-                Generate Password
-            </Button>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Your Generated Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}" IsReadOnly="True"/>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 20">
+                <CheckBox Margin="5" IsChecked="{Binding UserLower}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use lower case" />
+                <CheckBox Margin="5" IsChecked="{Binding UseUpper}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use upper case" />
+                <CheckBox Margin="5" IsChecked="{Binding UseNumber}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use number" />
+                <CheckBox Margin="5" IsChecked="{Binding UseSpecial}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use scpecial char" />
+                <CheckBox Margin="5" IsChecked="{Binding UsePolish}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use polish letters" />
+            </StackPanel>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 20">
+                <ComboBox materialDesign:HintAssist.Hint="Password Lenght (min 5)" ItemsSource="{Binding PasswordLenghtValues}" SelectedItem="{Binding PasswordLenght, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintComboBox}">
+                    <ComboBox.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <VirtualizingStackPanel />
+                        </ItemsPanelTemplate>
+                    </ComboBox.ItemsPanel>
+                </ComboBox>
+            </StackPanel>
+                
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding SavePassword}">
+                    Save
+                </Button>
+                <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding GeneratePassword}">
+                    Generate Password
+                </Button>
 
+                <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding CopyPassword}">
+                    Copy
+                </Button>
+            </StackPanel>
         </StackPanel>
 
 

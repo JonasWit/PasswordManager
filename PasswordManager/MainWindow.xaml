@@ -70,11 +70,11 @@
         </StackPanel>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF054274">
             <StackPanel>
-                <Grid Height="150" Background="White">
-                    <Button x:Name="ButtonCloseMenu" VerticalAlignment="Top" Width="60" Height="60" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
+                <Grid Height="70" Background="White">
+                    <Button x:Name="ButtonCloseMenu" VerticalAlignment="Center" Width="60" Height="60" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click">
                         <materialDesign:PackIcon Foreground="#FF1B3861" Kind="ArrowLeft" Width="25" Height="25"/>
                     </Button>
-                    <Button x:Name="ButtonOpenMenu" VerticalAlignment="Top" Width="60" Height="60" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click">
+                    <Button x:Name="ButtonOpenMenu" VerticalAlignment="Center" Width="60" Height="60" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Click="ButtonOpenMenu_Click">
                         <materialDesign:PackIcon Foreground="#FF1B3861" Kind="Menu" Width="25" Height="25"/>
                     </Button>
                 </Grid>

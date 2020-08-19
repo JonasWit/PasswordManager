@@ -10,49 +10,7 @@
       d:DesignHeight="530" d:DesignWidth="880"
       Title="Dashboard">
 
-    <Grid Background="LightGray">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="3*"/>
-        </Grid.ColumnDefinitions>
-
-        <Border Grid.Column="0" Background="Transparent">
-            <GroupBox Header="My Passwords" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" UseLayoutRounding="True" SnapsToDevicePixels="True">
-                <ListBox 
-                    ItemsSource="{Binding Passwords, Mode=TwoWay}"
-                    SelectedItem="{Binding Path=SelectedPassword, Mode=TwoWay}">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <TextBlock Text="{Binding Name}">
-                                <TextBlock.InputBindings>
-                                    <MouseBinding 
-                                    MouseAction="LeftDoubleClick"
-                                    Command="{Binding DataContext.ShowMainCasesSpace, RelativeSource={RelativeSource AncestorType={x:Type ListBox}}}"/>
-                                </TextBlock.InputBindings>
-                            </TextBlock>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
-
-
-            </GroupBox>
-        </Border>
-
-        <Grid Grid.Column="1">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="50"/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-
-        </Grid>
-        
-        
-        
-
-
-
-
-
+    <Grid Background="White">
+        <DataGrid ItemsSource="{Binding Passwords}" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" />
     </Grid>
 </Page>

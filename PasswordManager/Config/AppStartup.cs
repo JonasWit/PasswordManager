@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Controllers;
+using PasswordManager.ViewModels;
 
 namespace PasswordManager.Config
 {
@@ -11,14 +13,16 @@ namespace PasswordManager.Config
     {
         public static void Initialize()
         {
-            Dependancies.DI.Startup();
+            DI.Startup();
+            DI.Provider.GetService<FilesHandler>().HandleRootFolder();
 
-            var filesHander = Dependancies.DI.Provider.GetService<FilesHandler>();
-            filesHander.HandleRootFolder();
+            var context = DI.Provider.GetService<PMContext>();
+            context.Database.EnsureCreated();
 
-            PMContext.Startup();
-
-
+            var vmc = DI.Provider.GetService<ViewModelsController>();
+            vmc.CreateViewModel<CreateViewModel>();
+            vmc.CreateViewModel<DashboardViewModel>();
+            vmc.CreateViewModel<WindowViewModel>();
 
         }
     }

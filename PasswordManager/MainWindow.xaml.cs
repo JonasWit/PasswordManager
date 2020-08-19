@@ -31,8 +31,8 @@ namespace PasswordManager
             AppStartup.Initialize();
             InitializeComponent();
 
-            Dependancies.DI.Provider.GetService<ViewModelsController>().CreateViewModel<WindowViewModel>();
-            DataContext = Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>();
+            var vmc = DI.Provider.GetService<ViewModelsController>();
+            DataContext = vmc.GetViewModel<WindowViewModel>();
         }
 
         protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
