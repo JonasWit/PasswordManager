@@ -16,20 +16,16 @@ namespace PasswordManager.ViewModels
         private string password;
         public string Password { get => password; set { password = value; OnPropertyChanged(); } }
 
-        private bool busy;
-        public bool Busy { get => busy; set { busy = value; OnPropertyChanged(); } }
-
         public ICommand GeneratePassword { get; set; }
 
         public CreateViewModel()
         {
             SetUpCommands();
-            Busy = false;
         }
 
         private void SetUpCommands()
         {
-            GeneratePassword = new RelayCommand(async () => await DI.Provider.GetService<CreatePageController>().GeneratePassword());
+            GeneratePassword = new RelayCommand(() => DI.Provider.GetService<CreatePageController>().GeneratePassword());
         }
     }
 }

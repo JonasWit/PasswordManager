@@ -5,6 +5,7 @@ using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.ViewModels;
 using System.Threading.Tasks;
+using PasswordManager.Config;
 
 namespace PasswordManager.Controllers
 {
@@ -12,7 +13,7 @@ namespace PasswordManager.Controllers
     public class CreatePageController
     {
 
-        public async Task GeneratePassword()
+        public void GeneratePassword()
         {
             var vm = DI.Provider.GetService<ViewModelsController>().GetViewModel<CreateViewModel>();
 
@@ -21,7 +22,9 @@ namespace PasswordManager.Controllers
 
             try
             {
-      
+
+
+                return;   
             }
             catch (Exception ex)
             {
