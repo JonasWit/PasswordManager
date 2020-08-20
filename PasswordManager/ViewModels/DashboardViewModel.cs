@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace PasswordManager.ViewModels
 {
-    class DashboardViewModel : BaseViewModel
+    class DashboardViewModel : BaseViewModel, IViewModelRefreshable
     {
         private ObservableCollection<PasswordRecord> passwords;
         public ObservableCollection<PasswordRecord> Passwords { get => passwords; set { passwords = value; OnPropertyChanged(); } }
@@ -37,6 +37,12 @@ namespace PasswordManager.ViewModels
         public void SetupCommands()
         {
             GetPassword = new RelayCommand(() => Dependancies.DI.Provider.GetService<DashboardController>().GetPassword());
+        }
+
+        public void Refresh()
+        {
+            var repo = DI.Provider.GetService<IAppRepository>();
+            Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
         }
     }
 }

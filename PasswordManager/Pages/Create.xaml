@@ -44,6 +44,17 @@
                 </TextBox.Text>
             </TextBox>
             <TextBox Margin="10" materialDesign:HintAssist.Hint="Your Generated Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox materialDesign:HintAssist.Hint="It`s better to use automatically generated passwords!" materialDesign:HintAssist.HelperText="If you type your own password here it will be used - if you leave it empty generated password will be used!" Margin="10 10 10 30">
+                <TextBox.Text>
+                    <Binding Path="CustomPassword" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:AlreadyExistsValidationRule 
+                                ValidatesOnTargetUpdated="True"
+                                xmlns:validationRules="clr-namespace:PasswordManager.ValidationRules"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 0 0 20">
                 <CheckBox Margin="5" IsChecked="{Binding UserLower}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use lower case" />
                 <CheckBox Margin="5" IsChecked="{Binding UseUpper}" Style="{StaticResource MaterialDesignDarkCheckBox}" Content="Use upper case" />
@@ -60,7 +71,7 @@
                     </ComboBox.ItemsPanel>
                 </ComboBox>
             </StackPanel>
-                
+
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
                 <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding SavePassword}">
                     Save
@@ -74,10 +85,5 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-
-
-
-
-
     </Grid>
 </Page>

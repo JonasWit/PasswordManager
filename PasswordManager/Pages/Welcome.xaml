@@ -6,81 +6,150 @@
       xmlns:local="clr-namespace:PasswordManager.Pages"
       xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="880"
+      d:DesignHeight="530" d:DesignWidth="880"
       Title="Welcome">
 
-
     <Grid Background = "White">
-        <GroupBox Header="Welcome to Password Manager Lite!" Style="{DynamicResource MaterialDesignGroupBox}" Margin="16" materialDesign:ShadowAssist.ShadowDepth="Depth3" BorderThickness="0">
-            <StackPanel>
-
-                <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Left">
-
-                    <materialDesign:Card Width="290" Margin="5">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
-                                <materialDesign:PackIcon Kind="FormTextboxPassword" />
-                            </Button>
-                            <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                                <TextBlock FontWeight="Bold"> Passwords Lenght
-                                </TextBlock>
-                                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    The longer the better is usually true (but not in this case)!
-                                </TextBlock>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
-                                <TextBlock FontWeight="Bold" Text="Avarage lenght of your password is 0"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
-                                <materialDesign:RatingBar Value="4" />
-                            </StackPanel>
-                        </Grid>
-                    </materialDesign:Card>
-
-                    <materialDesign:Card Width="290" Margin="5">
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="30" />
-                                <RowDefinition Height="*" />
-                                <RowDefinition Height="Auto" />
-                                <RowDefinition Height="Auto" />
-                            </Grid.RowDefinitions>
-                            <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
-                                <materialDesign:PackIcon Kind="SafeSquareOutline" />
-                            </Button>
-                            <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                                <TextBlock FontWeight="Bold"> Passwords Strenght
-                                </TextBlock>
-                                <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:Card Width="270" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20" >
+                            <materialDesign:PackIcon Kind="FormTextboxPassword" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 0">
+                            <TextBlock FontWeight="Bold"> Passwords Lenght
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+                                    'The longer the better' is usually true (but not always when it comes to passwords)
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                            <TextBlock FontWeight="Bold" Text="{Binding AvgLenght}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
+                            <materialDesign:RatingBar Value="{Binding LenghtRating}" IsReadOnly="True" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Width="270" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                            <materialDesign:PackIcon Kind="TrophyVariant" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 0">
+                            <TextBlock FontWeight="Bold"> General Score
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+                                    Score based on the lenght and type of characters used in all your passwords
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                            <TextBlock FontWeight="Bold" Text="{Binding GeneralRatingMessage}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
+                            <materialDesign:RatingBar Value="{Binding GeneralRating}" IsReadOnly="True"  />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Width="270" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20">
+                            <materialDesign:PackIcon Kind="SafeSquareOutline" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 0">
+                            <TextBlock FontWeight="Bold"> Passwords Strenght
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
                                     The more characters you mix in the more secure you will be!
-                                </TextBlock>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
-                                <TextBlock FontWeight="Bold" Text="Avarage strenght of your password is 0"/>
-                            </StackPanel>
-                            <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
-                                <materialDesign:RatingBar Value="4"  />
-                            </StackPanel>
-                        </Grid>
-                    </materialDesign:Card>
-                </StackPanel>
-           
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                            <TextBlock FontWeight="Bold" Text="{Binding AvgStrenght}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
+                            <materialDesign:RatingBar Value="{Binding StrenghtRating}" IsReadOnly="True" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
 
             </StackPanel>
-
-        </GroupBox>
-
-
-
-
-
+            <StackPanel Grid.Row="1" VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Center">
+                <materialDesign:Card Width="270" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20" >
+                            <materialDesign:PackIcon Kind="HeadQuestion" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 0">
+                            <TextBlock FontWeight="Bold">Very Secure Passwods
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+                                    How many of your passwords can be considered as very secure?
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                            <TextBlock FontWeight="Bold" Text="{Binding VerySecureMessage}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
+                            <materialDesign:RatingBar Value="{Binding VerySecureRating}" IsReadOnly="True" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Width="270" Margin="5">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="30" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20" >
+                            <materialDesign:PackIcon Kind="HeadQuestion" />
+                        </Button>
+                        <StackPanel Grid.Row="1" Margin="8 24 8 0">
+                            <TextBlock FontWeight="Bold">Unique Passwods
+                            </TextBlock>
+                            <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
+                                    All your passwords should be unique!
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
+                            <TextBlock FontWeight="Bold" Text="{Binding UniqueMessage}"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Left" Grid.Row="3" Orientation="Horizontal" Margin="8">
+                            <materialDesign:RatingBar Value="{Binding UniqueRating}" IsReadOnly="True" />
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
     </Grid>
-
-
 </Page>

@@ -11,7 +11,7 @@ using PasswordManager.Controllers;
 
 namespace PasswordManager.ViewModels
 {
-    public class DeleteViewModel : BaseViewModel
+    public class DeleteViewModel : BaseViewModel, IViewModelRefreshable
     {
         private ObservableCollection<PasswordRecord> passwords;
         public ObservableCollection<PasswordRecord> Passwords { get => passwords; set { passwords = value; OnPropertyChanged(); } }
@@ -25,8 +25,6 @@ namespace PasswordManager.ViewModels
         {
             SetupCommands();
             SetupControls();
-
-
         }
 
         private void SetupControls()
@@ -38,6 +36,12 @@ namespace PasswordManager.ViewModels
         private void SetupCommands()
         {
             DeletePassword = new RelayCommand(async () => await DI.Provider.GetService<DeletePageController>().DeletePassword());
+        }
+
+        public void Refresh()
+        {
+            var repo = DI.Provider.GetService<IAppRepository>();
+            Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
         }
     }
 }

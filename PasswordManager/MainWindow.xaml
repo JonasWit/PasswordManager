@@ -51,19 +51,23 @@
             <Grid Height="70" VerticalAlignment="Top" Background="#FF0494E6">
                 <TextBlock Text="Password Manager Lite" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="22"></TextBlock>
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Text="User Name" VerticalAlignment="Center" FontSize="18"/>
+                    <TextBlock Text="{Binding Username}" VerticalAlignment="Center" FontSize="18"/>
                     <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel Width="150">
                             <Button Content="Help"/>
                             <Separator/>
-                            <Button x:Name="ExitButtonPopup" Content="Exit"/>
+                            <Button x:Name="ExitButtonPopup" Content="Exit" Command="{Binding Exit}"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
                 </StackPanel>
 
             </Grid>
             <Grid x:Name="PageGrid" Height="530" Width="1020" HorizontalAlignment="Right">
-                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={converters:AppPageValueConverter}}"/>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="23*"/>
+                    <ColumnDefinition Width="79*"/>
+                </Grid.ColumnDefinitions>
+                <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={converters:AppPageValueConverter}}" Grid.ColumnSpan="2"/>
             </Grid>
         </StackPanel>
         <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF054274">

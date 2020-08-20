@@ -22,6 +22,9 @@ namespace PasswordManager.ViewModels
         private AppPage currentPage;
         public AppPage CurrentPage { get { return currentPage; } set { currentPage = value; OnPropertyChanged(); } }
 
+        private string username;
+        public string Username { get { return username; } set { username = value; OnPropertyChanged(); } }
+
         #region Commands
 
         public ICommand Exit { get; set; }
@@ -32,6 +35,8 @@ namespace PasswordManager.ViewModels
         {
             try
             {
+                Username = $" Hi! {Environment.UserName}";
+
                 var licenseManagger = DI.Provider.GetService<LicenseHandler>();
                 var filesHandler = DI.Provider.GetService<FilesHandler>();
 
@@ -50,7 +55,7 @@ namespace PasswordManager.ViewModels
             }
             catch (Exception)
             {
-                throw;
+                DI.Provider.GetService<WindowController>().Exit();
             }
         }
 

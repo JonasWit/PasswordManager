@@ -1,6 +1,7 @@
 ﻿using PasswordManager.Dependancies;
 using PasswordManager.Infrastructure;
 using PasswordManager.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -36,7 +37,8 @@ namespace PasswordManager.Data
                 NumbersCases = record.NumbersCases,
                 PolishCases = record.PolishCases,
                 SpecialCases = record.SpecialCases,
-                Email = record.Email
+                Email = record.Email,
+                Created = DateTime.Now
             });
 
             return pmContext.SaveChangesAsync();

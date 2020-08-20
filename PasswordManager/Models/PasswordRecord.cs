@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace PasswordManager.Models
 {
@@ -16,12 +17,13 @@ namespace PasswordManager.Models
         public string Login { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Password { get; set; }
 
         [Required]
-        [MaxLength(50)]
+        [MaxLength(100)]
         public string Email { get; set; }
+
+        public DateTime Created { get; set; }
 
         public int Lenght { get; set; }
         public bool LowerCases { get; set; }

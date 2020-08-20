@@ -1,13 +1,9 @@
-﻿using PasswordManager.Dependancies;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using PasswordManager.ViewModels;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Dependancies;
 using PasswordManager.Infrastructure;
-using System.Collections.ObjectModel;
-using PasswordManager.Models;
+using PasswordManager.ViewModels;
+using System;
+using System.Threading.Tasks;
 
 namespace PasswordManager.Controllers
 {
@@ -23,8 +19,6 @@ namespace PasswordManager.Controllers
 
             var vmc = DI.Provider.GetService<ViewModelsController>();
             var vm = vmc.GetViewModel<DeleteViewModel>();
-            var dashboardVm = vmc.GetViewModel<DashboardViewModel>();
-            var deleteVm = vmc.GetViewModel<DeleteViewModel>();
 
             if (vm.SelectedPassword == null)
             {
@@ -37,8 +31,7 @@ namespace PasswordManager.Controllers
                 var repo = DI.Provider.GetService<IAppRepository>();
                 await repo.DeletePassword(vm.SelectedPassword.Id);
 
-                dashboardVm.Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
-                deleteVm.Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
+                app.RefreshViewModels();
             }
             catch (Exception)
             {

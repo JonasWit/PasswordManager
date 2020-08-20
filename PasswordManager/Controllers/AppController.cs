@@ -14,7 +14,19 @@ namespace PasswordManager.Controllers
         public bool Busy { get; set; }
         public AppPage Page { get; private set; } = AppPage.Welcome;
 
-        public PasswordRecord ActivePassword { get; set; }
+        public void RefreshViewModels()
+        {
+            var vmc = DI.Provider.GetService<ViewModelsController>();
+
+            foreach (var vm in vmc.AppViewModels)
+            {
+                if (vm is IViewModelRefreshable)
+                {
+                    var refreshableVm = vm as IViewModelRefreshable;
+                    refreshableVm.Refresh();
+                }
+            }
+        }
 
         public void EnableBusyState()
         {

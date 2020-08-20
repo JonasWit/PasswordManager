@@ -23,6 +23,9 @@ namespace PasswordManager.ViewModels
         private string password;
         public string Password { get => password; set { password = value; OnPropertyChanged(); } }
 
+        private string customPassword;
+        public string CustomPassword { get => customPassword; set { customPassword = value; OnPropertyChanged(); } }
+
         private ObservableCollection<int> passwordLenghtValues;
         public ObservableCollection<int> PasswordLenghtValues { get => passwordLenghtValues; set { passwordLenghtValues = value; OnPropertyChanged(); } }
 

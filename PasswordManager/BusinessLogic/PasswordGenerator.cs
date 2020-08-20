@@ -1,13 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore.Internal;
-using PasswordManager.Data;
-using PasswordManager.Dependancies;
 using PasswordManager.Infrastructure;
 using PasswordManager.Models;
 using System;
 using System.Collections.Generic;
-using System.Dynamic;
-using System.ServiceProcess;
-using System.Text;
 using System.Linq;
 using System.Text.RegularExpressions;
 
