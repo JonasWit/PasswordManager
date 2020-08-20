@@ -132,7 +132,7 @@
                             <RowDefinition Height="Auto" />
                         </Grid.RowDefinitions>
                         <Button Grid.Row="0" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0 0 16 -20" >
-                            <materialDesign:PackIcon Kind="HeadQuestion" />
+                            <materialDesign:PackIcon Kind="LockQuestion" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
                             <TextBlock FontWeight="Bold">Unique Passwods

@@ -152,6 +152,7 @@ namespace PasswordManager.BusinessLogic
         }
 
         private double AssessVerySecureShare(double securePasswords, double total) => Math.Floor((securePasswords / total) * 100);
+
         private double AssessVerySecureRating(double total, double verySecure) => Math.Floor(5 * (verySecure / total));
         
         private double AssessVerySecure(List<PasswordRecord> passwords) => passwords.Count(x => AssessStrenghtRating(x) == 5 && AssessLenghtRating(x.Lenght) == 5);
@@ -168,7 +169,13 @@ namespace PasswordManager.BusinessLogic
                 score += Math.Floor((lenghtScore + strenghtScore) / 2d);
             }
 
+            var duplicates = passwords.GroupBy(x => x.Password).Where(x => x.Count() > 1).Select(y => new { Password = y.Key }).ToList().Count;
             var rating = score / passwords.Count;
+
+            if (duplicates != 0)
+            {
+                rating /= 2;
+            }
 
             return Math.Floor(rating);
         }
@@ -189,11 +196,11 @@ namespace PasswordManager.BusinessLogic
 
             if (duplicates == 0)
             {
-                return "All your passwords are unique!";
+                return "All of your passwords are unique!";
             }
             else
             {
-                return $"{duplicates} passwords are not unique!";
+                return $"{duplicates} of your passwords are not unique!";
             }
         }
 
