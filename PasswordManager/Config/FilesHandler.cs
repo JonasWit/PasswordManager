@@ -25,6 +25,32 @@ namespace PasswordManager.Config
             }
         }
 
+        public bool CheckRootFolderContent()
+        {
+            try
+            {
+                if (Directory.Exists(Definitions.CorePath))
+                {
+                    if (Directory.GetFiles(Definitions.CorePath, Definitions.DBName).Length == 0)
+                    {
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
         public bool HandleFolder(string path)
         {
             try

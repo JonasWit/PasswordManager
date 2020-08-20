@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Windows;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Controllers;
+using PasswordManager.Dependancies;
+using PasswordManager.ViewModels;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace PasswordManager.Pages
 {
@@ -21,6 +14,9 @@ namespace PasswordManager.Pages
         public Delete()
         {
             InitializeComponent();
+
+            var vmc = DI.Provider.GetService<ViewModelsController>();
+            DataContext = vmc.GetViewModel<DeleteViewModel>();
         }
     }
 }

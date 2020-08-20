@@ -4,11 +4,45 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:PasswordManager.Pages"
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Delete">
 
-    <Grid>
+    <Grid Background="White">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Margin="2" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">Your Passwords</TextBlock>
         
+        <ListBox ItemsSource="{Binding Passwords, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPassword, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" Grid.Row="1">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}"></TextBlock>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Name, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Login, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Email, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Password, Mode=TwoWay}" IsReadOnly="True"/>
+            <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding DeletePassword}">
+                Delete Password
+            </Button>
+        </StackPanel>
+
+
+
+
+
+
     </Grid>
 </Page>

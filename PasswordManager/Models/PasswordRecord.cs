@@ -19,6 +19,10 @@ namespace PasswordManager.Models
         [MaxLength(50)]
         public string Password { get; set; }
 
+        [Required]
+        [MaxLength(50)]
+        public string Email { get; set; }
+
         public int Lenght { get; set; }
         public bool LowerCases { get; set; }
         public bool UpperCases { get; set; }

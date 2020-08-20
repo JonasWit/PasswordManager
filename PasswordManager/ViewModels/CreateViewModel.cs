@@ -17,6 +17,9 @@ namespace PasswordManager.ViewModels
         private string login;
         public string Login { get => login; set { login = value; OnPropertyChanged(); } }
 
+        private string email;
+        public string Email { get => email; set { email = value; OnPropertyChanged(); } }
+
         private string password;
         public string Password { get => password; set { password = value; OnPropertyChanged(); } }
 
@@ -53,7 +56,7 @@ namespace PasswordManager.ViewModels
 
         private void SetUpControls()
         {
-            PasswordLenghtValues = new ObservableCollection<int> { 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21 };
+            PasswordLenghtValues = new ObservableCollection<int> { 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 21 };
             PasswordLenght = 16;
             UserLower = true;
             UseUpper = true;

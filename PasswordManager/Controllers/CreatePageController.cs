@@ -38,6 +38,7 @@ namespace PasswordManager.Controllers
                 app.ActivePassword = new PasswordRecord
                 {
                     Name = vm.Name,
+                    Email = vm.Email,
                     Password = vm.Password,
                     Lenght = vm.PasswordLenght,
                     Login = vm.Login,
@@ -68,10 +69,12 @@ namespace PasswordManager.Controllers
             var vmc = DI.Provider.GetService<ViewModelsController>();
             var vm = vmc.GetViewModel<CreateViewModel>();
             var dashboardVm = vmc.GetViewModel<DashboardViewModel>();
+            var deleteVm = vmc.GetViewModel<DeleteViewModel>();
 
             if (string.IsNullOrEmpty(vm.Login) || 
                 string.IsNullOrEmpty(vm.Name) || 
-                string.IsNullOrEmpty(vm.Password))
+                string.IsNullOrEmpty(vm.Password) ||
+                string.IsNullOrEmpty(vm.Email))
             {
                 app.DisableBusyState();
                 return;
@@ -81,7 +84,9 @@ namespace PasswordManager.Controllers
             {
                 var repo = DI.Provider.GetService<IAppRepository>();
                 await repo.CreatePassword(app.ActivePassword);
+
                 dashboardVm.Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
+                deleteVm.Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
             }
             catch (Exception)
             {

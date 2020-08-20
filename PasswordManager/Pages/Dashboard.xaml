@@ -13,4 +13,5 @@
     <Grid Background="White">
         <DataGrid ItemsSource="{Binding Passwords}" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" />
     </Grid>
+    
 </Page>

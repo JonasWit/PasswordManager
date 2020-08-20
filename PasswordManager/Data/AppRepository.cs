@@ -35,12 +35,20 @@ namespace PasswordManager.Data
                 UpperCases = record.UpperCases,
                 NumbersCases = record.NumbersCases,
                 PolishCases = record.PolishCases,
-                SpecialCases = record.SpecialCases
+                SpecialCases = record.SpecialCases,
+                Email = record.Email
             });
 
             return pmContext.SaveChangesAsync();
         }
 
         public PasswordRecord GetPassword(string name) => pmContext.Passwords.FirstOrDefault(x => x.Name == name);
+
+        public Task<int> DeletePassword(int id)
+        {
+            var entityToRemove = pmContext.Passwords.FirstOrDefault(x => x.Id == id);
+            pmContext.Passwords.Remove(entityToRemove);
+            return pmContext.SaveChangesAsync();
+        }
     }
 }

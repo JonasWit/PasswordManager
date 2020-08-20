@@ -8,7 +8,7 @@
       d:DesignHeight="530" d:DesignWidth="880"
       Title="Create">
 
-    <Grid Background ="White">
+    <Grid Background = "White">
         <StackPanel Grid.Column="1">
             <TextBox materialDesign:HintAssist.Hint="Name" materialDesign:HintAssist.HelperText="Name of the new record here..." Margin="10">
                 <TextBox.Text>
@@ -24,6 +24,17 @@
             <TextBox materialDesign:HintAssist.Hint="Login" materialDesign:HintAssist.HelperText="Your Login here..." Margin="10">
                 <TextBox.Text>
                     <Binding Path="Login" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <validationRules:NotEmptyValidationRule 
+                                ValidatesOnTargetUpdated="True"
+                                xmlns:validationRules="clr-namespace:PasswordManager.ValidationRules"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox materialDesign:HintAssist.Hint="Email" materialDesign:HintAssist.HelperText="Your email address here..." Margin="10">
+                <TextBox.Text>
+                    <Binding Path="Email" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <validationRules:NotEmptyValidationRule 
                                 ValidatesOnTargetUpdated="True"

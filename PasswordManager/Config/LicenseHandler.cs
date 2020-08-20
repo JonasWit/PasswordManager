@@ -8,10 +8,6 @@ namespace PasswordManager.Config
     {
         public bool CheckLicense()
         {
-
-
-
-
             return true;
         }
 

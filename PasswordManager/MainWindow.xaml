@@ -54,8 +54,6 @@
                     <TextBlock Text="User Name" VerticalAlignment="Center" FontSize="18"/>
                     <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel Width="150">
-                            <Button Content="Settings"/>
-                            <Button Content="Account"/>
                             <Button Content="Help"/>
                             <Separator/>
                             <Button x:Name="ExitButtonPopup" Content="Exit"/>
@@ -79,6 +77,12 @@
                     </Button>
                 </Grid>
                 <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" Foreground="#FF0494E6">
+                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectWelcomePage">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="Application" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Home Page" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
                     <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectDashboardPage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="ViewDashboard" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>

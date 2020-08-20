@@ -12,5 +12,6 @@ namespace PasswordManager.Infrastructure
         PasswordRecord GetPassword(string name);
         Task<int> CreatePassword(string login, string password);
         Task<int> CreatePassword(PasswordRecord record);
+        Task<int> DeletePassword(int id);
     }
 }

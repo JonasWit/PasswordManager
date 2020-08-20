@@ -5,6 +5,9 @@ using System.Collections.Generic;
 using System.Text;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.Config;
+using PasswordManager.Data;
+using System.Windows.Input;
+using PasswordManager.Controllers;
 
 namespace PasswordManager.ViewModels
 {
@@ -21,6 +24,7 @@ namespace PasswordManager.ViewModels
 
         #region Commands
 
+        public ICommand Exit { get; set; }
 
         #endregion
 
@@ -28,7 +32,8 @@ namespace PasswordManager.ViewModels
         {
             try
             {
-                var licenseManagger = Dependancies.DI.Provider.GetService<LicenseHandler>();
+                var licenseManagger = DI.Provider.GetService<LicenseHandler>();
+                var filesHandler = DI.Provider.GetService<FilesHandler>();
 
                 if (licenseManagger.CheckLicense())
                 {
@@ -38,7 +43,7 @@ namespace PasswordManager.ViewModels
                 else
                 {
                     LicenseValid = false;
-                    CurrentPage = AppPage.Welcome;
+                    CurrentPage = AppPage.License;
                 }
                
                 SetUpCommands();
@@ -51,7 +56,7 @@ namespace PasswordManager.ViewModels
 
         private void SetUpCommands()
         {
-
+            Exit = new RelayCommand(() => DI.Provider.GetService<WindowController>().Exit());
         }
 
     }

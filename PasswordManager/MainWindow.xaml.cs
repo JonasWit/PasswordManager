@@ -54,19 +54,22 @@ namespace PasswordManager
         }
 
         private void SelectDashboardPage(object sender, MouseButtonEventArgs e) =>
-            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Dashboard;
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Dashboard;
 
         private void SelectCreatePage(object sender, MouseButtonEventArgs e) =>
-            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Create;
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Create;
 
 
         private void SelectDeletePage(object sender, MouseButtonEventArgs e) =>
-            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Delete;
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Delete;
 
         private void SelectExtractPage(object sender, MouseButtonEventArgs e) =>
-            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Extract;
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Extract;
 
         private void SelectLicensePage(object sender, MouseButtonEventArgs e) =>
-            Dependancies.DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.License;
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.License;
+
+        private void SelectWelcomePage(object sender, MouseButtonEventArgs e) =>
+            DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Welcome;
     }
 }
