@@ -24,7 +24,14 @@
         <ListBox ItemsSource="{Binding Passwords, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPassword, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" Grid.Row="1">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"></TextBlock>
+                    <TextBlock>
+                        <TextBlock.Text>
+                            <MultiBinding StringFormat="{}{0} - {1}">
+                                <Binding Path="Name" />
+                                <Binding Path="Login" />
+                            </MultiBinding>
+                        </TextBlock.Text>
+                    </TextBlock>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
