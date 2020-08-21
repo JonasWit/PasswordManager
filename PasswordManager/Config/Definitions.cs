@@ -1,6 +1,7 @@
 ﻿using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Text;
@@ -13,6 +14,6 @@ namespace PasswordManager.Config
         public const string JsonExtractName = "Passwords.json";
 
         public static string CorePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "PasswordManagerLite");
-        public static string Location => Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        public static string Location => Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
     }
 }
