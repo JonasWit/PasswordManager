@@ -36,7 +36,7 @@ namespace PasswordManager.ViewModels
 
         public void SetupCommands()
         {
-            GetPassword = new RelayCommand(() => Dependancies.DI.Provider.GetService<DashboardController>().GetPassword());
+            GetPassword = new RelayCommand(() => DI.Provider.GetService<DashboardController>().GetPassword());
         }
 
         public void Refresh()

@@ -10,28 +10,36 @@ namespace PasswordManager.Controllers
     [Service]
     public class DeletePageController
     {
+        private readonly AppController appController;
+        private readonly ViewModelsController viewModelsController;
+        private readonly IAppRepository appRepository;
+
+        public DeletePageController(AppController appController, ViewModelsController viewModelsController, IAppRepository appRepository)
+        {
+            this.appController = appController;
+            this.viewModelsController = viewModelsController;
+            this.appRepository = appRepository;
+        }
+
+
         public async Task DeletePassword()
         {
-            var app = DI.Provider.GetService<AppController>();
+            if (appController.Busy) return;
+            else appController.EnableBusyState();
 
-            if (app.Busy) return;
-            else app.EnableBusyState();
-
-            var vmc = DI.Provider.GetService<ViewModelsController>();
-            var vm = vmc.GetViewModel<DeleteViewModel>();
+            var vm = viewModelsController.GetViewModel<DeleteViewModel>();
 
             if (vm.SelectedPassword == null)
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
                 return;
             }
 
             try
             {
-                var repo = DI.Provider.GetService<IAppRepository>();
-                await repo.DeletePassword(vm.SelectedPassword.Id);
+                await appRepository.DeletePassword(vm.SelectedPassword.Id);
 
-                app.RefreshViewModels();
+                appController.RefreshViewModels();
             }
             catch (Exception)
             {
@@ -39,7 +47,7 @@ namespace PasswordManager.Controllers
             }
             finally
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
             }
         }
     }

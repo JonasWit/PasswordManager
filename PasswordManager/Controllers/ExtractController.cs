@@ -11,13 +11,19 @@ namespace PasswordManager.Controllers
     [Service]
     public class ExtractController
     {
+        private readonly AppController appController;
+        private readonly Extractor extractor;
+
+        public ExtractController(AppController appController, Extractor extractor)
+        {
+            this.appController = appController;
+            this.extractor = extractor;
+        }
+
         public async Task ExtractPasswords()
         {
-            var app = DI.Provider.GetService<AppController>();
-            var extractor = DI.Provider.GetService<Extractor>();
-
-            if (app.Busy) return;
-            else app.EnableBusyState();
+            if (appController.Busy) return;
+            else appController.EnableBusyState();
 
             try
             {
@@ -30,7 +36,7 @@ namespace PasswordManager.Controllers
             }
             finally
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
             }
         }
 

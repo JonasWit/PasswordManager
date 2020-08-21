@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using PasswordManager.BusinessLogic;
+﻿using PasswordManager.BusinessLogic;
 using PasswordManager.Dependancies;
 using PasswordManager.Infrastructure;
 using PasswordManager.Models;
@@ -13,23 +12,39 @@ namespace PasswordManager.Controllers
     [Service]
     public class CreatePageController
     {
+        private readonly AppController appController;
+        private readonly ViewModelsController viewModelsController;
+        private readonly PasswordReviewer passwordReviewer;
+        private readonly IPasswordGenerator passwordGenerator;
+        private readonly IAppRepository appRepository;
+
+        public CreatePageController(
+            AppController appController, 
+            ViewModelsController viewModelsController, 
+            PasswordReviewer passwordReviewer, 
+            IPasswordGenerator passwordGenerator,
+            IAppRepository appRepository)
+        {
+            this.appController = appController;
+            this.viewModelsController = viewModelsController;
+            this.passwordReviewer = passwordReviewer;
+            this.passwordGenerator = passwordGenerator;
+            this.appRepository = appRepository;
+        }
+
         public async Task GeneratePassword()
         {
-            var app = DI.Provider.GetService<AppController>();
+            if (appController.Busy) return;
+            else appController.EnableBusyState();
 
-            if (app.Busy) return;
-            else app.EnableBusyState();
-
-            var vm = DI.Provider.GetService<ViewModelsController>().GetViewModel<CreateViewModel>();
+            var vm = viewModelsController.GetViewModel<CreateViewModel>();
 
             if (string.IsNullOrEmpty(vm.Login) || 
                 string.IsNullOrEmpty(vm.Name))
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
                 return;
             }
-
-            IPasswordGenerator passwordGenerator = DI.Provider.GetService<IPasswordGenerator>();
 
             try
             {
@@ -41,20 +56,16 @@ namespace PasswordManager.Controllers
             }
             finally
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
             }
         }
 
         public async Task SavePassword()
         {
-            var app = DI.Provider.GetService<AppController>();
+            if (appController.Busy) return;
+            else appController.EnableBusyState();
 
-            if (app.Busy) return;
-            else app.EnableBusyState();
-
-            var vmc = DI.Provider.GetService<ViewModelsController>();
-            var vm = vmc.GetViewModel<CreateViewModel>();
-            var passwordReviewer = DI.Provider.GetService<PasswordReviewer>();
+            var vm = viewModelsController.GetViewModel<CreateViewModel>();
 
             if (string.IsNullOrEmpty(vm.Login) || 
                 string.IsNullOrEmpty(vm.Name) || 
@@ -62,14 +73,12 @@ namespace PasswordManager.Controllers
                 (string.IsNullOrEmpty(vm.Password) && 
                 string.IsNullOrEmpty(vm.CustomPassword)))
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
                 return;
             }
 
             try
             {
-                var repo = DI.Provider.GetService<IAppRepository>();
-
                 var modelToAdd = new PasswordRecord
                 {
                     Email = vm.Email,
@@ -84,9 +93,9 @@ namespace PasswordManager.Controllers
                     PolishCases = string.IsNullOrEmpty(vm.CustomPassword) ? passwordReviewer.CheckPolishCase(vm.Password) : passwordReviewer.CheckPolishCase(vm.CustomPassword),
                 };
 
-                await repo.CreatePassword(modelToAdd);
-   
-                app.RefreshViewModels();
+                await appRepository.CreatePassword(modelToAdd);
+
+                appController.RefreshViewModels();
             }
             catch (Exception)
             {
@@ -94,13 +103,13 @@ namespace PasswordManager.Controllers
             }
             finally
             {
-                app.DisableBusyState();
+                appController.DisableBusyState();
             }
         }
 
         public void CopyPassword()
         {
-            var vm = DI.Provider.GetService<ViewModelsController>().GetViewModel<CreateViewModel>();
+            var vm = viewModelsController.GetViewModel<CreateViewModel>();
 
             if (!string.IsNullOrEmpty(vm.Password))
             {
