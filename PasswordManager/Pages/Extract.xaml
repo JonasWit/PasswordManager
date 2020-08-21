@@ -26,7 +26,7 @@
                         <TextBlock FontWeight="Bold"> Extract All Passwords
                         </TextBlock>
                         <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                            Two files will be created - JSON file with yuor data and a copy of the local database. Files will be saved in the same location that your application.
+                            Two files will be created - JSON file with your data and a copy of the local database. Files will be saved in the same directory as your application.
                         </TextBlock>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal" Margin="8">
