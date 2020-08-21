@@ -9,5 +9,6 @@ namespace PasswordManager.Config
     {
         public const string CorePath = "C:\\PasswordManager";
         public const string DBName = "PMDB.db";
+        public const string JsonExtractName = "Passwords.json";
     }
 }

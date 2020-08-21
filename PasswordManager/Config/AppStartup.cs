@@ -25,6 +25,7 @@ namespace PasswordManager.Config
             vmc.CreateViewModel<WindowViewModel>();
             vmc.CreateViewModel<DeleteViewModel>();
             vmc.CreateViewModel<WelcomeViewModel>();
+            vmc.CreateViewModel<ExtractViewModel>();
         }
     }
 }

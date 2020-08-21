@@ -33,8 +33,6 @@ namespace PasswordManager.Dependancies
             @this.AddTransient<IAppRepository, AppRepository>();
             @this.AddSingleton(new ViewModelsController());
             @this.AddSingleton(new SystemData());
-            @this.AddSingleton(new LicenseHandler());
-            @this.AddSingleton(new FilesHandler());
             @this.AddSingleton(new AppController());
             @this.AddHttpClient();
             @this.AddDbContext<PMContext>(options =>

@@ -1,13 +1,9 @@
-﻿using PasswordManager.Dependancies;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Controllers;
+using PasswordManager.Dependancies;
 using PasswordManager.Pages;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using Microsoft.Extensions.DependencyInjection;
-using PasswordManager.Config;
-using PasswordManager.Data;
 using System.Windows.Input;
-using PasswordManager.Controllers;
 
 namespace PasswordManager.ViewModels
 {
@@ -28,6 +24,7 @@ namespace PasswordManager.ViewModels
         #region Commands
 
         public ICommand Exit { get; set; }
+        public ICommand About { get; set; }
 
         #endregion
 
@@ -36,21 +33,9 @@ namespace PasswordManager.ViewModels
             try
             {
                 Username = $" Hi! {Environment.UserName}";
+                LicenseValid = true;
+                CurrentPage = AppPage.Welcome;
 
-                var licenseManagger = DI.Provider.GetService<LicenseHandler>();
-                var filesHandler = DI.Provider.GetService<FilesHandler>();
-
-                if (licenseManagger.CheckLicense())
-                {
-                    LicenseValid = true;
-                    CurrentPage = AppPage.Welcome;
-                }
-                else
-                {
-                    LicenseValid = false;
-                    CurrentPage = AppPage.License;
-                }
-               
                 SetUpCommands();
             }
             catch (Exception)
@@ -62,6 +47,7 @@ namespace PasswordManager.ViewModels
         private void SetUpCommands()
         {
             Exit = new RelayCommand(() => DI.Provider.GetService<WindowController>().Exit());
+            About = new RelayCommand(() => DI.Provider.GetService<WindowController>().About());
         }
 
     }

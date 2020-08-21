@@ -54,9 +54,9 @@
                     <TextBlock Text="{Binding Username}" VerticalAlignment="Center" FontSize="18"/>
                     <materialDesign:PopupBox Margin="10" PlacementMode="BottomAndAlignRightEdges" StaysOpen="False">
                         <StackPanel Width="150">
-                            <Button Content="Help"/>
+                            <Button Content="About" Command="{Binding About}"/>
                             <Separator/>
-                            <Button x:Name="ExitButtonPopup" Content="Exit" Command="{Binding Exit}"/>
+                            <Button Content="Exit" Command="{Binding Exit}"/>
                         </StackPanel>
                     </materialDesign:PopupBox>
                 </StackPanel>

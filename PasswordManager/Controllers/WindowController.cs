@@ -1,7 +1,5 @@
 ﻿using PasswordManager.Dependancies;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Diagnostics;
 using System.Windows;
 
 namespace PasswordManager.Controllers
@@ -10,5 +8,15 @@ namespace PasswordManager.Controllers
     public class WindowController
     {
         public void Exit() => Application.Current.Shutdown();
+
+        public void About()
+        {
+            var psi = new ProcessStartInfo
+            {
+                FileName = "http://www.webcouple.pl",
+                UseShellExecute = true
+            };
+            Process.Start(psi);
+        }
     }
 }
