@@ -21,7 +21,7 @@ namespace PasswordManager.Config
         {
             this.filesHandler = filesHandler;
             this.appRepository = appRepository;
-            location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+            location = Definitions.Location;
         }
 
         public Task ExtractJson()

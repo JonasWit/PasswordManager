@@ -13,7 +13,7 @@ namespace PasswordManager.Config
     {
         private readonly string location;
 
-        public FilesHandler() => location = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
+        public FilesHandler() => location = Definitions.Location;
 
         public bool HandleRootFolder()
         {
