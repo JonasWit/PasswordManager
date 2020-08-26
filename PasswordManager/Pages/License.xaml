@@ -9,6 +9,12 @@
       Title="License">
 
     <Grid Background = "White">
-        
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top">
+            <TextBlock Margin="2" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">Content:</TextBlock>
+            <TextBlock Margin="2" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">"Icon made by Freepik from www.flaticon.com"</TextBlock>
+
+
+
+        </StackPanel>
     </Grid>
 </Page>
