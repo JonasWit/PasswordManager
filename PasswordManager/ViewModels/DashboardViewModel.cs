@@ -9,6 +9,7 @@ using System.Windows.Input;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.Infrastructure;
 using System.Runtime.InteropServices;
+using PasswordManager.BusinessLogic;
 
 namespace PasswordManager.ViewModels
 {
@@ -25,13 +26,7 @@ namespace PasswordManager.ViewModels
         public DashboardViewModel()
         {
             SetupCommands();
-            SetupControls();
-        }
-
-        public void SetupControls()
-        {
-            var repo = DI.Provider.GetService<IAppRepository>();
-            Passwords = new ObservableCollection<PasswordRecord>(repo.GetPasswords());
+            Refresh();
         }
 
         public void SetupCommands()

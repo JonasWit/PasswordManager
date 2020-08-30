@@ -1,16 +1,16 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.DataProtection;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption;
+using Microsoft.AspNetCore.DataProtection.AuthenticatedEncryption.ConfigurationModel;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.BusinessLogic;
 using PasswordManager.Config;
 using PasswordManager.Controllers;
 using PasswordManager.Data;
 using PasswordManager.Infrastructure;
-using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace PasswordManager.Dependancies
 {
@@ -29,6 +29,13 @@ namespace PasswordManager.Dependancies
                 @this.AddTransient(service);
             }
 
+            @this.AddDataProtection()
+                   .UseCryptographicAlgorithms(new AuthenticatedEncryptorConfiguration()
+                   {
+                       EncryptionAlgorithm = EncryptionAlgorithm.AES_256_GCM,
+                       ValidationAlgorithm = ValidationAlgorithm.HMACSHA256
+                   });
+
             @this.AddTransient<IPasswordGenerator, PasswordGenerator>();
             @this.AddTransient<IAppRepository, AppRepository>();
             @this.AddSingleton(new ViewModelsController());
@@ -36,7 +43,8 @@ namespace PasswordManager.Dependancies
             @this.AddSingleton(new AppController());
             @this.AddHttpClient();
             @this.AddDbContext<PMContext>(options =>
-                options.UseSqlite($"Data Source={Path.Combine(Definitions.CorePath, Definitions.DBName)}"));
+                options.UseSqlite($"Data Source={Path.Combine(Definitions.CorePath, Definitions.DBName)}"),
+                ServiceLifetime.Transient);
 
             return @this;
         }

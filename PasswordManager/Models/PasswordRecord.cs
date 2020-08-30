@@ -23,7 +23,12 @@ namespace PasswordManager.Models
         [MaxLength(100)]
         public string Email { get; set; }
 
+        [Required]
         public DateTime Created { get; set; }
+
+        [Required]
+        [MaxLength(100)]
+        public string CreatedBy { get; set; }
 
         public int Lenght { get; set; }
         public bool LowerCases { get; set; }
