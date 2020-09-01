@@ -1,15 +1,10 @@
-﻿using PasswordManager.Controllers;
+﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Controllers;
 using PasswordManager.Dependancies;
-using PasswordManager.Models;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text;
-using System.Windows.Input;
-using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.Infrastructure;
-using System.Runtime.InteropServices;
-using PasswordManager.BusinessLogic;
+using PasswordManager.Models;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
 
 namespace PasswordManager.ViewModels
 {
@@ -18,8 +13,8 @@ namespace PasswordManager.ViewModels
         private ObservableCollection<PasswordRecord> passwords;
         public ObservableCollection<PasswordRecord> Passwords { get => passwords; set { passwords = value; OnPropertyChanged(); } }
 
-        private PasswordRecord selectedPassword;
-        public PasswordRecord SelectedPassword { get => selectedPassword; set { selectedPassword = value; OnPropertyChanged(); } }
+        private ObservableCollection<PasswordCharViewModel> passwordCharacters;
+        public ObservableCollection<PasswordCharViewModel> PasswordCharacters { get => passwordCharacters; set { passwordCharacters = value; OnPropertyChanged(); } }
 
         public ICommand GetPassword { get; set; }
 
@@ -27,11 +22,26 @@ namespace PasswordManager.ViewModels
         {
             SetupCommands();
             Refresh();
+            PasswordCharacters = new ObservableCollection<PasswordCharViewModel>();
         }
 
         public void SetupCommands()
         {
             GetPassword = new RelayCommand(() => DI.Provider.GetService<DashboardController>().GetPassword());
+        }
+
+        public void RefreshPasswordSplitter(PasswordRecord record)
+        {
+            PasswordCharacters = new ObservableCollection<PasswordCharViewModel>();
+
+            for (int i = 0; i < record.Password.Length; i++)
+            {
+                PasswordCharacters.Add(new PasswordCharViewModel
+                {  
+                    Number = (i + 1).ToString(),
+                    Character = record.Password[i].ToString()
+                });
+            }
         }
 
         public void Refresh()
