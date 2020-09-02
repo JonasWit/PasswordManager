@@ -38,7 +38,6 @@ namespace PasswordManager.Controllers
             try
             {
                 await appRepository.DeletePassword(vm.SelectedPassword.Id);
-
                 appController.RefreshViewModels();
             }
             catch (Exception)

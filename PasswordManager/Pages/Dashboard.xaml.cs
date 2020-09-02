@@ -3,6 +3,7 @@ using PasswordManager.Controllers;
 using PasswordManager.Dependancies;
 using PasswordManager.Models;
 using PasswordManager.ViewModels;
+using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace PasswordManager.Pages
@@ -20,15 +21,19 @@ namespace PasswordManager.Pages
             DataContext = vmc.GetViewModel<DashboardViewModel>();
         }
 
-        private void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private async void DataGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
             var data = sender as DataGrid;
-            var selectedData = data.SelectedCells[0];
 
-            if (selectedData.Column.Header.ToString() == "Password")
+            if (data.SelectedCells.Count != 0)
             {
-                var vmc = DI.Provider.GetService<ViewModelsController>();
-                vmc.GetViewModel<DashboardViewModel>().RefreshPasswordSplitter(selectedData.Item as PasswordRecord);
+                var selectedData = data.SelectedCells[0];
+
+                if (selectedData.Column.Header.ToString() == "Password")
+                {
+                    var vmc = DI.Provider.GetService<ViewModelsController>();
+                    await Task.Run(() => vmc.GetViewModel<DashboardViewModel>().RefreshPasswordSplitter(selectedData.Item as PasswordRecord));
+                } 
             }
         }
     }
