@@ -14,14 +14,14 @@
             <materialDesign:Card Width="450" Margin="5">
                 <Grid>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="30" />
+                        <RowDefinition Height="10" />
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
                     <StackPanel Grid.Row="1" Margin="8 10 8 0">
                         <TextBlock FontWeight="Bold" Text="{Binding InfoTitle, Mode=TwoWay}" HorizontalAlignment="Center" Margin="0 0 0 10"></TextBlock>
-                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding InfoMessage, Mode=TwoWay}"></TextBlock>
+                        <TextBlock TextWrapping="Wrap" VerticalAlignment="Center" Text="{Binding InfoMessage, Mode=TwoWay}" HorizontalAlignment="Center"></TextBlock>
                     </StackPanel>
                     <StackPanel HorizontalAlignment="Center" Grid.Row="3" Orientation="Horizontal" Margin="8">
                         <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" Command="{Binding Dismiss}">

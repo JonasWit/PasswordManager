@@ -39,14 +39,14 @@ namespace PasswordManager.Controllers
             {
                 await appRepository.DeletePassword(vm.SelectedPassword.Id);
                 appController.RefreshViewModels();
+
+                appController.DisableBusyState();
+                appController.ShowInfoPage("Success!", "Password Deleted!");
             }
             catch (Exception)
             {
-
-            }
-            finally
-            {
                 appController.DisableBusyState();
+                appController.ShowInfoPage("Issue!", "Please try again!");
             }
         }
     }

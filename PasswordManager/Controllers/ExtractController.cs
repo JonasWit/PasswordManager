@@ -29,17 +29,15 @@ namespace PasswordManager.Controllers
             {
                 await extractor.ExtractJson();
                 await extractor.ExtractDatabase();
+
+                appController.DisableBusyState();
+                appController.ShowInfoPage("Success!", "Passwords extracted!");
             }
             catch (Exception)
             {
-            
-            }
-            finally
-            {
                 appController.DisableBusyState();
+                appController.ShowInfoPage("Issue!", "Please try again!");
             }
         }
-
-
     }
 }

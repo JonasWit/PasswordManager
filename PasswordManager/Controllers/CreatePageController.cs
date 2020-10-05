@@ -17,22 +17,19 @@ namespace PasswordManager.Controllers
         private readonly PasswordReviewer passwordReviewer;
         private readonly IPasswordGenerator passwordGenerator;
         private readonly IAppRepository appRepository;
-        private readonly CipherService cipherService;
 
         public CreatePageController(
             AppController appController, 
             ViewModelsController viewModelsController, 
             PasswordReviewer passwordReviewer, 
             IPasswordGenerator passwordGenerator,
-            IAppRepository appRepository,
-            CipherService cipherService)
+            IAppRepository appRepository)
         {
             this.appController = appController;
             this.viewModelsController = viewModelsController;
             this.passwordReviewer = passwordReviewer;
             this.passwordGenerator = passwordGenerator;
             this.appRepository = appRepository;
-            this.cipherService = cipherService;
         }
 
         public async Task GeneratePassword()
@@ -105,6 +102,7 @@ namespace PasswordManager.Controllers
             catch (Exception)
             {
                 appController.DisableBusyState();
+                appController.ShowInfoPage("Password Not Added!", "Please try again!");
             }
         }
 
