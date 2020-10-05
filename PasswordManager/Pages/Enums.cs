@@ -14,5 +14,6 @@ namespace PasswordManager.Pages
         License = 5,
         ApplyLicenseKey = 6,
         Loading = 7,
+        Info = 8,
     }
 }

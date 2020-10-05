@@ -99,12 +99,10 @@ namespace PasswordManager.Controllers
                 await appRepository.CreatePassword(modelToAdd);
 
                 appController.RefreshViewModels();
+                appController.DisableBusyState();
+                appController.ShowInfoPage("Password Added!", "New Password has been added, check your dashboard!");
             }
             catch (Exception)
-            {
-
-            }
-            finally
             {
                 appController.DisableBusyState();
             }

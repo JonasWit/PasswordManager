@@ -94,7 +94,7 @@ namespace PasswordManager.BusinessLogic
         {
             var count = passwords.Count();
 
-            var strenghtNumber = 0d;
+            var strenghtNumber = 1d;
 
             foreach (var password in passwords)
             {
@@ -102,12 +102,11 @@ namespace PasswordManager.BusinessLogic
                 if (password.UpperCases) strenghtNumber++;
                 if (password.NumbersCases) strenghtNumber++;
                 if (password.SpecialCases) strenghtNumber++;
-                if (password.PolishCases) strenghtNumber++;
             }
 
             var score = strenghtNumber / count;
 
-            return Math.Floor(score);
+            return Math.Ceiling(score);
         }
 
         private double AssessLenghtRating(double lenght)
@@ -140,13 +139,12 @@ namespace PasswordManager.BusinessLogic
 
         private double AssessStrenghtRating(PasswordRecord password)
         {
-            var strenghtNumber = 0d;
+            var strenghtNumber = 1d;
 
             if (password.LowerCases) strenghtNumber++;
             if (password.UpperCases) strenghtNumber++;
             if (password.NumbersCases) strenghtNumber++;
             if (password.SpecialCases) strenghtNumber++;
-            if (password.PolishCases) strenghtNumber++;
 
             return strenghtNumber;
         }

@@ -28,6 +28,12 @@ namespace PasswordManager.Controllers
             }
         }
 
+        public void ShowInfoPage(string title, string message)
+        {
+            var infoController = DI.Provider.GetService<InfoController>();
+            infoController.ShowMessage(title, message);
+        }
+
         public void EnableBusyState()
         {
             if (Busy) return;
