@@ -21,7 +21,6 @@ namespace PasswordManager.Controllers
             this.appRepository = appRepository;
         }
 
-
         public async Task DeletePassword()
         {
             if (appController.Busy) return;
