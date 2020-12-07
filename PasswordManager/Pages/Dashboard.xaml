@@ -31,8 +31,8 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
-        
-        <DataGrid Grid.Row="1" ItemsSource="{Binding Passwords}" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged"/>
+
+        <DataGrid Grid.Row="1" ItemsSource="{Binding Passwords}" CanUserAddRows="False" SelectionUnit="Cell" SelectionMode="Extended" IsReadOnly="True" SelectedCellsChanged="DataGrid_SelectedCellsChanged" FontFamily="Tahoma"/>
     </Grid>
 
 </Page>
