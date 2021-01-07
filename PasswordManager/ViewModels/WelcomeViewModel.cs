@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.BusinessLogic;
+using PasswordManager.Config;
 using PasswordManager.Dependancies;
 using PasswordManager.Models;
 using System.Collections.Generic;
@@ -42,7 +43,10 @@ namespace PasswordManager.ViewModels
 
         public WelcomeViewModel()
         {
-            Refresh();
+            if (!string.IsNullOrEmpty(Definitions.GeneralPassword))
+            {
+                Refresh();
+            }
         }
 
         public void Refresh()

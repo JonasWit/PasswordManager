@@ -65,7 +65,7 @@ namespace PasswordManager.ViewModels
             UseUpper = true;
             UseNumber = true;
             UseSpecial = true;
-            UsePolish = true;
+            UsePolish = false;
         }
 
         private void SetUpCommands()

@@ -20,13 +20,8 @@ namespace PasswordManager.Config
             context.Database.EnsureCreated();
 
             var vmc = DI.Provider.GetService<ViewModelsController>();
-            vmc.CreateViewModel<CreateViewModel>();
-            vmc.CreateViewModel<DashboardViewModel>();
+            vmc.CreateViewModel<GetGeneralPasswordViewModel>();
             vmc.CreateViewModel<WindowViewModel>();
-            vmc.CreateViewModel<DeleteViewModel>();
-            vmc.CreateViewModel<WelcomeViewModel>();
-            vmc.CreateViewModel<ExtractViewModel>();
-            vmc.CreateViewModel<InfoViewModel>();
         }
     }
 }

@@ -22,6 +22,7 @@ namespace PasswordManager.Converters
                 AppPage.ApplyLicenseKey => new ApplyLicenseKey(),
                 AppPage.Loading => new Loading(),
                 AppPage.Info => new Info(),
+                AppPage.GetGeneralPassword => new GetGeneralPassword(),
                 _ => new Welcome(),
             };
         }

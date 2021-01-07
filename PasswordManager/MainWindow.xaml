@@ -70,7 +70,7 @@
                 <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden" Content="{Binding CurrentPage, Converter={converters:AppPageValueConverter}}" Grid.ColumnSpan="2"/>
             </Grid>
         </StackPanel>
-        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF054274">
+        <Grid x:Name="GridMenu" Width="60" HorizontalAlignment="Left" Background="#FF054274" Visibility="{Binding GeneralPasswordProvided, Converter={converters:BooleanToVisiblityConverter}}">
             <StackPanel>
                 <Grid Height="70" Background="White">
                     <Button x:Name="ButtonCloseMenu" VerticalAlignment="Center" Width="60" Height="60" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Visibility="Collapsed" Click="ButtonCloseMenu_Click">

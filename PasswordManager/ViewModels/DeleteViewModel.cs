@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using System.Windows.Input;
 using PasswordManager.Controllers;
 using PasswordManager.BusinessLogic;
+using PasswordManager.Config;
 
 namespace PasswordManager.ViewModels
 {
@@ -25,7 +26,15 @@ namespace PasswordManager.ViewModels
         public DeleteViewModel()
         {
             SetupCommands();
-            Refresh();
+
+            if (!string.IsNullOrEmpty(Definitions.GeneralPassword))
+            {
+                Refresh();
+            }
+            else
+            {
+                Passwords = new ObservableCollection<PasswordRecord>();
+            }
         }
 
         private void SetupCommands()

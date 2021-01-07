@@ -13,7 +13,7 @@ namespace PasswordManager.Controllers
         {
             var psi = new ProcessStartInfo
             {
-                FileName = "http://www.systemywp.pl",
+                FileName = "https://www.systemywp.pl",
                 UseShellExecute = true
             };
             Process.Start(psi);

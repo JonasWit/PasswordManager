@@ -21,6 +21,9 @@ namespace PasswordManager.ViewModels
         private string username;
         public string Username { get { return username; } set { username = value; OnPropertyChanged(); } }
 
+        private bool generalPasswordProvided;
+        public bool GeneralPasswordProvided { get => generalPasswordProvided; set { generalPasswordProvided = value; OnPropertyChanged(); } }
+
         #region Commands
 
         public ICommand Exit { get; set; }
@@ -32,9 +35,9 @@ namespace PasswordManager.ViewModels
         {
             try
             {
-                Username = $" Hi! {Environment.UserName}";
+                Username = $" Witaj! {Environment.UserName}";
                 LicenseValid = true;
-                CurrentPage = AppPage.Welcome;
+                CurrentPage = AppPage.GetGeneralPassword;
 
                 SetUpCommands();
             }

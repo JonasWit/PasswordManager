@@ -28,7 +28,14 @@ namespace PasswordManager.Data
 
             foreach (var password in result)
             {
-                password.Password = cipherService.Decrypt(password.Password);
+                try
+                {
+                    password.Password = cipherService.Decrypt(password.Password);
+                }
+                catch (Exception)
+                {
+                    password.Password = "Nie odszyfrowano!";
+                }
             }
 
             return result;
@@ -37,7 +44,16 @@ namespace PasswordManager.Data
         public PasswordRecord GetPassword(string name)
         {
             var result =  pmContext.Passwords.FirstOrDefault(x => x.Name == name);
-            result.Password = cipherService.Decrypt(result.Password);
+
+            try
+            {
+                result.Password = cipherService.Decrypt(result.Password);
+            }
+            catch (Exception ex)
+            {
+                result.Password = "Nie odszyfrowano!";
+            }
+
             return result;
         }
 

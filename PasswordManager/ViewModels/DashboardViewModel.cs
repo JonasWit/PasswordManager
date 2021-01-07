@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using PasswordManager.Config;
 using PasswordManager.Controllers;
 using PasswordManager.Dependancies;
 using PasswordManager.Infrastructure;
@@ -21,7 +22,16 @@ namespace PasswordManager.ViewModels
         public DashboardViewModel()
         {
             SetupCommands();
-            Refresh();
+
+            if (!string.IsNullOrEmpty(Definitions.GeneralPassword))
+            {
+                Refresh();
+            }
+            else
+            {
+                Passwords = new ObservableCollection<PasswordRecord>();
+            }
+
             PasswordCharacters = new ObservableCollection<PasswordCharViewModel>();
         }
 

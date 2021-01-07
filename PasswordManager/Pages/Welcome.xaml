@@ -28,10 +28,10 @@
                             <materialDesign:PackIcon Kind="FormTextboxPassword" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                            <TextBlock FontWeight="Bold"> Passwords Lenght
+                            <TextBlock FontWeight="Bold"> Długość Haseł
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    'The longer the better' is usually true (but not always when it comes to passwords)
+                                    Ilość znaków ma wpływ na bezpieczeństwo.
                             </TextBlock>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
@@ -54,10 +54,10 @@
                             <materialDesign:PackIcon Kind="TrophyVariant" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                            <TextBlock FontWeight="Bold"> General Score
+                            <TextBlock FontWeight="Bold"> Całkowita Ocena
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    Score based on the lenght and type of characters used in all your passwords
+                                    Ocena bazuje na długości i stopniu skomplikowania Twoich haseł.
                             </TextBlock>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
@@ -80,10 +80,10 @@
                             <materialDesign:PackIcon Kind="SafeSquareOutline" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                            <TextBlock FontWeight="Bold"> Passwords Strenght
+                            <TextBlock FontWeight="Bold"> Siła haseł
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    The more characters you mix in the more secure you will be!
+                                    Im więcej unikatowych znaków zawiera hasło tym jest bezpieczniejsze!
                             </TextBlock>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
@@ -109,10 +109,10 @@
                             <materialDesign:PackIcon Kind="HeadQuestion" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                            <TextBlock FontWeight="Bold">Very Secure Passwods
+                            <TextBlock FontWeight="Bold">Bardzo Silne Hasła
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    How many of your passwords can be considered as very secure?
+                                    Ile z Twoich haseł można zaklasyfikować jako 'bardzo silne'?
                             </TextBlock>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">
@@ -135,10 +135,10 @@
                             <materialDesign:PackIcon Kind="LockQuestion" />
                         </Button>
                         <StackPanel Grid.Row="1" Margin="8 24 8 0">
-                            <TextBlock FontWeight="Bold">Unique Passwods
+                            <TextBlock FontWeight="Bold">Unikatowe Hasła
                             </TextBlock>
                             <TextBlock TextWrapping="Wrap" VerticalAlignment="Center">
-                                    All your passwords should be unique!
+                                    Nie powinno się używać danego hasła do więcej niż jednego celu!
                             </TextBlock>
                         </StackPanel>
                         <StackPanel HorizontalAlignment="Left" Grid.Row="2" Orientation="Horizontal" Margin="8">

@@ -42,32 +42,32 @@ namespace PasswordManager.BusinessLogic
 
             if (passwords.Count == 0)
             {
-                AvgLenght = $"Avarage lenght of your password is {0}";
-                AvgStrenght = $"Avarage lenght of your password is {0}";
+                AvgLenght = $"Średnia długość hasła to {0}";
+                AvgStrenght = $"Średnia siła hasła to {0}";
                 StrenghtRating = 0;
                 LenghtRating = 0;
                 GeneralRating = 0;
-                VerySecureMessage = $"{0} out of {0} passwords are very secure!";
+                VerySecureMessage = $"{0} z {0} haseł są bardzo bezpieczne!";
                 VerySecureRating = 0;
-                GeneralRatingMessage = "No passwords yet!";
-                UniqueMessage = "No passwords yet!";
+                GeneralRatingMessage = "Nie ma jeszcze zapisanych haseł!";
+                UniqueMessage = "Nie ma jeszcze zapisanych haseł!";
                 UniqueRating = 0;
             }
             else
             {
                 var avgLenght = AssessAvgLenght(passwords);
-                AvgLenght = $"Avarage lenght of your password is {avgLenght}";
+                AvgLenght = $"Średnia długość hasła to {avgLenght}";
                 LenghtRating = AssessLenghtRating(avgLenght);
 
                 var avgStrenght = AssessAvgStrenght(passwords);
-                AvgStrenght = $"Avarage strenght of your password is {Math.Floor((avgStrenght / 5) * 100)}%";
+                AvgStrenght = $"Średnia siła hasła to {Math.Floor((avgStrenght / 5) * 100)}%";
                 StrenghtRating = avgStrenght;
                 GeneralRating = AssessGeneralRating(passwords);
                 GeneralRatingMessage = CreateGeneralRatingComment(GeneralRating);
 
                 var verySecurePasswords = AssessVerySecure(passwords);
                 var verySecureShare = AssessVerySecureShare(verySecurePasswords, passwords.Count);
-                VerySecureMessage = $"{verySecureShare}% of passwords are very secure!";
+                VerySecureMessage = $"{verySecureShare}% Twoich haseł są bardzo bezpieczne!";
                 VerySecureRating = AssessVerySecureRating(passwords.Count, verySecurePasswords);
 
                 UniqueMessage = CreateUniqueRatingComment(passwords);
@@ -78,15 +78,14 @@ namespace PasswordManager.BusinessLogic
         private string CreateGeneralRatingComment(double rating) =>
             rating switch
             {
-                0 => "Why even use passwords?",
-                1 => "Why even use passwords?",
-                2 => "Why even use passwords?",
-                3 => "Could have been better!",
-                4 => "Most of your passwords are secure!",
-                5 => "Passwords are secure!",
+                0 => "Po co wogóle używać haseł?",
+                1 => "Po co wogóle używać haseł?",
+                2 => "Po co wogóle używać haseł?",
+                3 => "Mogłoby być lepiej!",
+                4 => "Większość haseł jest bezpieczna!",
+                5 => "Hasła są bezpieczne!",
                 _ => "",
             };
-
 
         private double AssessAvgLenght(List<PasswordRecord> passwords) => Math.Floor(passwords.Average(x => x.Lenght));
 
@@ -194,11 +193,11 @@ namespace PasswordManager.BusinessLogic
 
             if (duplicates == 0)
             {
-                return "All of your passwords are unique!";
+                return "Wszystkie Twoje hasła są unikatowe!";
             }
             else
             {
-                return $"{duplicates} of your passwords are not unique!";
+                return $"{duplicates} hasła się powtarzają!";
             }
         }
 
