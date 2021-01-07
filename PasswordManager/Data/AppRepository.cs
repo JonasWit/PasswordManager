@@ -35,9 +35,21 @@ namespace PasswordManager.Data
                 catch (Exception)
                 {
                     password.Password = "Nie odszyfrowano!";
+                    //password.Login = "Nie odszyfrowano!";
+                    //password.Email = "Nie odszyfrowano!";
+                    //password.Name = "Nie odszyfrowano!";
+                    //password.Lenght = 0;
+                    //password.UpperCases = false;
+                    //password.LowerCases = false;
+                    //password.SpecialCases = false;
+                    //password.NumbersCases = false;
+                    //password.PolishCases = false;
+                    //password.Created = DateTime.Now;
+                    //password.CreatedBy = "Nie odszyfrowano!";
                 }
             }
 
+            result.RemoveAll(x => x.Password.Equals("Nie odszyfrowano!"));
             return result;
         }
 
@@ -49,9 +61,22 @@ namespace PasswordManager.Data
             {
                 result.Password = cipherService.Decrypt(result.Password);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                result.Password = "Nie odszyfrowano!";
+                //result.Password = "Nie odszyfrowano!";
+                //result.Login = "Nie odszyfrowano!";
+                //result.Email = "Nie odszyfrowano!";
+                //result.Name = "Nie odszyfrowano!";
+                //result.Lenght = 0;
+                //result.UpperCases = false;
+                //result.LowerCases = false;
+                //result.SpecialCases = false;
+                //result.NumbersCases = false;
+                //result.PolishCases = false;
+                //result.Created = DateTime.Now;
+                //result.CreatedBy = "Nie odszyfrowano!";
+
+                result = null;
             }
 
             return result;

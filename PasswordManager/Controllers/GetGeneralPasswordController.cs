@@ -21,9 +21,10 @@ namespace PasswordManager.Controllers
         {
             var vm = _viewModelsController.GetViewModel<GetGeneralPasswordViewModel>();
             var mainFormVm = _viewModelsController.GetViewModel<WindowViewModel>();
-
+      
             if (string.IsNullOrEmpty(vm.Password)) return;
 
+            mainFormVm.CurrentPage = Pages.AppPage.Loading;
             Definitions.GeneralPassword = vm.Password;
 
             _viewModelsController.CreateViewModel<CreateViewModel>();
