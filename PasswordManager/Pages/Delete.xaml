@@ -19,7 +19,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <TextBlock Margin="2" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">Your Passwords</TextBlock>
+        <TextBlock Margin="2" Style="{StaticResource MaterialDesignSubtitle2TextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center">Twoje Hasła</TextBlock>
         
         <ListBox ItemsSource="{Binding Passwords, Mode=TwoWay}" SelectedItem="{Binding Path=SelectedPassword, Mode=TwoWay}" IsEnabled="{Binding IsChecked, ElementName=EnableListBox}" Grid.Row="1">
             <ListBox.ItemTemplate>
@@ -35,21 +35,15 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        
+
         <StackPanel Grid.Row="1" Grid.Column="1">
             <TextBox Margin="10" materialDesign:HintAssist.Hint="Name" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Name, Mode=TwoWay}" IsReadOnly="True"/>
             <TextBox Margin="10" materialDesign:HintAssist.Hint="Login" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Login, Mode=TwoWay}" IsReadOnly="True"/>
             <TextBox Margin="10" materialDesign:HintAssist.Hint="Email" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Email, Mode=TwoWay}" IsReadOnly="True"/>
-            <TextBox Margin="10" materialDesign:HintAssist.Hint="Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Password, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Hasło" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedPassword.Password, Mode=TwoWay}" IsReadOnly="True"/>
             <Button Margin="5" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="200" Command="{Binding DeletePassword}">
-                Delete Password
+                Usuń Hasło
             </Button>
         </StackPanel>
-
-
-
-
-
-
     </Grid>
 </Page>

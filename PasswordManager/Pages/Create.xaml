@@ -43,8 +43,8 @@
                     </Binding>
                 </TextBox.Text>
             </TextBox>
-            <TextBox Margin="10" materialDesign:HintAssist.Hint="Your Generated Password" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}" IsReadOnly="True"/>
-            <TextBox materialDesign:HintAssist.Hint="It`s better to use automatically generated passwords!" materialDesign:HintAssist.HelperText="If you type your own password here it will be used - if you leave it empty generated password will be used!" Margin="10 10 10 30">
+            <TextBox Margin="10" materialDesign:HintAssist.Hint="Hasło wygenerowane automatycznie" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding Password, Mode=TwoWay}" IsReadOnly="True"/>
+            <TextBox materialDesign:HintAssist.Hint="Lepiej używać haseł generowanych automatycznie!" materialDesign:HintAssist.HelperText="Jeśli wpiszesz własne hasło - będzie ono użyte, jeśli zostawisz to pole puste - użyte będzie hasło wygenerowane automatycznie!" Margin="10 10 10 30">
                 <TextBox.Text>
                     <Binding Path="CustomPassword" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
