@@ -14,14 +14,20 @@ namespace PasswordManager.Config
         public static void Initialize()
         {
             DI.Startup();
-            DI.Provider.GetService<FilesHandler>().HandleRootFolder();
 
-            var context = DI.Provider.GetService<PMContext>();
-            context.Database.EnsureCreated();
+            if (DI.Provider.GetService<FilesHandler>().HandleRootFolder())
+            {
+                var context = DI.Provider.GetService<PMContext>();
+                context.Database.EnsureCreated();
 
-            var vmc = DI.Provider.GetService<ViewModelsController>();
-            vmc.CreateViewModel<GetGeneralPasswordViewModel>();
-            vmc.CreateViewModel<WindowViewModel>();
+                var vmc = DI.Provider.GetService<ViewModelsController>();
+                vmc.CreateViewModel<GetGeneralPasswordViewModel>();
+                vmc.CreateViewModel<WindowViewModel>();
+            }
+            else
+            {
+
+            }         
         }
     }
 }

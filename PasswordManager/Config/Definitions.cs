@@ -12,7 +12,7 @@ namespace PasswordManager.Config
         public const string JsonExtractName = "Passwords.json";
         public static string DBName => $"PMLDB_{Environment.UserName}.db";
         public static string AccessKey => GeneralPassword;
-        public static string CorePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "PML_System");
+        public static string CorePath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "PML_System");
         public static string Location => Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         public static string GetDrviceId() => 
             new DeviceIdBuilder()
