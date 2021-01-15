@@ -52,7 +52,7 @@ namespace PasswordManager.Controllers
             }
             catch (Exception)
             {
-                vm.Password = "Issue while generating password, please try again...";
+                vm.Password = "Wystąpił problem przy generowaniu hasła, spróbuj jeszcze raz...";
             }
             finally
             {
@@ -97,12 +97,12 @@ namespace PasswordManager.Controllers
 
                 appController.RefreshViewModels();
                 appController.DisableBusyState();
-                appController.ShowInfoPage("Password Added!", "New Password has been added, check your dashboard!");
+                appController.ShowInfoPage("Hasło zapisane!", "Sprawdź Panel by zobaczyć wszystkie dane.");
             }
             catch (Exception)
             {
                 appController.DisableBusyState();
-                appController.ShowInfoPage("Password Not Added!", "Please try again!");
+                appController.ShowInfoPage("Hasło nie zostało zapisane!", "Spróbuj jeszcze raz.");
             }
         }
 
