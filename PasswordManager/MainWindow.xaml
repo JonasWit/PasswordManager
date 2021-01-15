@@ -84,7 +84,7 @@
                     <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectWelcomePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Application" Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
-                            <TextBlock Text="Home" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Statystyki" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
                     <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectDashboardPage">
@@ -102,15 +102,15 @@
                     <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectDeletePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Delete"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
-                            <TextBlock Text="Stwórz Hasło" VerticalAlignment="Center" Margin="20 10"/>
+                            <TextBlock Text="Usuń Hasło" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
-                    <ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectExtractPage">
+                    <!--<ListViewItem Height="60" Visibility="{Binding LicenseValid, Converter={converters:BooleanToVisiblityConverter}}" PreviewMouseLeftButtonDown="SelectExtractPage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="Unarchive"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
                             <TextBlock Text="Ściągnij Hasła" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
-                    </ListViewItem>
+                    </ListViewItem>-->
                     <ListViewItem Height="60" PreviewMouseLeftButtonDown="SelectLicensePage">
                         <StackPanel Orientation="Horizontal">
                             <materialDesign:PackIcon Kind="License"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
