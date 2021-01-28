@@ -31,6 +31,9 @@ namespace PasswordManager.Data
                 try
                 {
                     password.Password = cipherService.Decrypt(password.Password);
+                    password.Name = cipherService.Decrypt(password.Name);
+                    password.Login = cipherService.Decrypt(password.Login);
+                    password.Email = cipherService.Decrypt(password.Email);
                 }
                 catch (Exception)
                 {
@@ -49,6 +52,9 @@ namespace PasswordManager.Data
             try
             {
                 result.Password = cipherService.Decrypt(result.Password);
+                result.Name = cipherService.Decrypt(result.Name);
+                result.Login = cipherService.Decrypt(result.Login);
+                result.Email = cipherService.Decrypt(result.Email);
             }
             catch (Exception)
             {
@@ -62,16 +68,16 @@ namespace PasswordManager.Data
         {
             pmContext.Passwords.Add(new PasswordRecord
             {
-                Name = record.Name,
+                Name = cipherService.Encrypt(record.Name),
                 Password = cipherService.Encrypt(record.Password),
                 Lenght = record.Lenght,
-                Login = record.Login,
+                Login = cipherService.Encrypt(record.Login),
                 LowerCases = record.LowerCases,
                 UpperCases = record.UpperCases,
                 NumbersCases = record.NumbersCases,
                 PolishCases = record.PolishCases,
                 SpecialCases = record.SpecialCases,
-                Email = record.Email,
+                Email = cipherService.Encrypt(record.Email),
                 Created = DateTime.Now,
                 CreatedBy = Environment.UserName
             });
@@ -94,6 +100,12 @@ namespace PasswordManager.Data
             {
                 password.Password = cipherService.Decrypt(password.Password);
                 password.Password = cipherService.Encrypt(password.Password, newPassword);
+                password.Name = cipherService.Decrypt(password.Name);
+                password.Name = cipherService.Encrypt(password.Name, newPassword);
+                password.Login = cipherService.Decrypt(password.Login);
+                password.Login = cipherService.Encrypt(password.Login, newPassword);
+                password.Email = cipherService.Decrypt(password.Email);
+                password.Email = cipherService.Encrypt(password.Email, newPassword);
             }
 
             pmContext.UpdateRange();
