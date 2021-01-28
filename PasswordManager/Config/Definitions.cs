@@ -12,7 +12,7 @@ namespace PasswordManager.Config
         public const string JsonExtractName = "Passwords.json";
         public static string DBName => $"PasswordManagerLite.db";
         public static string AccessKey => GeneralPassword;
-        public static string CorePath => Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
+        public static string CorePath => Location;
         public static string Location => Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName);
         public static string GetDrviceId() => 
             new DeviceIdBuilder()
