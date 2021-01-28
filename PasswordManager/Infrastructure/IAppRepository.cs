@@ -9,6 +9,7 @@ namespace PasswordManager.Infrastructure
     public interface IAppRepository
     {
         List<PasswordRecord> GetPasswords();
+        void ChangeGeneralPassword(string newPassword);
         PasswordRecord GetPassword(string name);
         Task<int> CreatePassword(PasswordRecord record);
         Task<int> DeletePassword(int id);

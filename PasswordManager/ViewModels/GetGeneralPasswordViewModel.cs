@@ -19,7 +19,7 @@ namespace PasswordManager.ViewModels
 
         public void SetupCommands()
         {
-            ApplyGeneralPassword = new RelayCommand(() => DI.Provider.GetService<GetGeneralPasswordController>().ApplyGeneralPassword());
+            ApplyGeneralPassword = new RelayCommand(() => DI.Provider.GetService<GeneralPasswordController>().ApplyGeneralPassword());
         }
     }
 }

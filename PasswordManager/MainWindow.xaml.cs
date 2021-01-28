@@ -1,23 +1,10 @@
-﻿using PasswordManager.Dependancies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Extensions.DependencyInjection;
-using PasswordManager.ViewModels;
-using PasswordManager.Controllers;
-using PasswordManager.Data;
+﻿using Microsoft.Extensions.DependencyInjection;
 using PasswordManager.Config;
+using PasswordManager.Controllers;
+using PasswordManager.Dependancies;
+using PasswordManager.ViewModels;
+using System.Windows;
+using System.Windows.Input;
 
 namespace PasswordManager
 {
@@ -71,5 +58,8 @@ namespace PasswordManager
 
         private void SelectWelcomePage(object sender, MouseButtonEventArgs e) =>
             DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.Welcome;
+
+        private void SelectChangeGeneralPasswordPage(object sender, MouseButtonEventArgs e) =>
+             DI.Provider.GetService<ViewModelsController>().GetViewModel<WindowViewModel>().CurrentPage = Pages.AppPage.ChangeGeneralPassword;
     }
 }

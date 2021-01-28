@@ -117,6 +117,12 @@
                             <TextBlock Text="Informacje" VerticalAlignment="Center" Margin="20 10"/>
                         </StackPanel>
                     </ListViewItem>
+                    <ListViewItem Height="60" PreviewMouseLeftButtonDown="SelectChangeGeneralPasswordPage">
+                        <StackPanel Orientation="Horizontal">
+                            <materialDesign:PackIcon Kind="LockOpen"  Width="25" Height="25" VerticalAlignment="Center" Margin="10"/>
+                            <TextBlock Text="Dostęp" VerticalAlignment="Center" Margin="20 10"/>
+                        </StackPanel>
+                    </ListViewItem>
                 </ListView>
             </StackPanel>
         </Grid>

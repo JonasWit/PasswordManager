@@ -10,7 +10,7 @@
 
     <Grid Background = "White">
         <StackPanel Grid.Column="1">
-            <TextBox materialDesign:HintAssist.Hint="Name" materialDesign:HintAssist.HelperText="Wpisz nazwę dla tego rekordu..." Margin="10">
+            <TextBox materialDesign:HintAssist.Hint="Nazwa" materialDesign:HintAssist.HelperText="Wpisz nazwę dla tego rekordu..." Margin="10">
                 <TextBox.Text>
                     <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>

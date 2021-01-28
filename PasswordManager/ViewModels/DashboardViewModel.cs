@@ -17,12 +17,8 @@ namespace PasswordManager.ViewModels
         private ObservableCollection<PasswordCharViewModel> passwordCharacters;
         public ObservableCollection<PasswordCharViewModel> PasswordCharacters { get => passwordCharacters; set { passwordCharacters = value; OnPropertyChanged(); } }
 
-        public ICommand GetPassword { get; set; }
-
         public DashboardViewModel()
         {
-            SetupCommands();
-
             if (!string.IsNullOrEmpty(Definitions.GeneralPassword))
             {
                 Refresh();
@@ -33,11 +29,6 @@ namespace PasswordManager.ViewModels
             }
 
             PasswordCharacters = new ObservableCollection<PasswordCharViewModel>();
-        }
-
-        public void SetupCommands()
-        {
-            GetPassword = new RelayCommand(() => DI.Provider.GetService<DashboardController>().GetPassword());
         }
 
         public void RefreshPasswordSplitter(PasswordRecord record)

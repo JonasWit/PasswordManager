@@ -15,6 +15,7 @@ namespace PasswordManager.Pages
         ApplyLicenseKey = 6,
         Loading = 7,
         Info = 8,
-        GetGeneralPassword = 9
+        GetGeneralPassword = 9,
+        ChangeGeneralPassword = 10,
     }
 }

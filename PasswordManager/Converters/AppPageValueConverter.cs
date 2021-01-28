@@ -10,7 +10,6 @@ namespace PasswordManager.Converters
     {
         public override object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            // Find the appropriate page
             return ((AppPage)value) switch
             {
                 AppPage.Welcome => new Welcome(),
@@ -23,6 +22,7 @@ namespace PasswordManager.Converters
                 AppPage.Loading => new Loading(),
                 AppPage.Info => new Info(),
                 AppPage.GetGeneralPassword => new GetGeneralPassword(),
+                AppPage.ChangeGeneralPassword => new ChangeGeneralPassword(),
                 _ => new Welcome(),
             };
         }
