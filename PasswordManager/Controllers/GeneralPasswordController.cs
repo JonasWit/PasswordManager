@@ -42,6 +42,7 @@ namespace PasswordManager.Controllers
 
                 mainFormVm.CurrentPage = Pages.AppPage.Welcome;
                 mainFormVm.GeneralPasswordProvided = true;
+                vm.Password = "";
             }
             catch (Exception)
             {
@@ -67,6 +68,7 @@ namespace PasswordManager.Controllers
             try
             {   
                 _repo.ChangeGeneralPassword(vm.NewPassword);
+                Definitions.GeneralPassword = "";
             }
             catch (Exception)
             {
